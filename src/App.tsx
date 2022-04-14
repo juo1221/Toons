@@ -3,6 +3,7 @@ import TabContainer from './container/TabContainer';
 import SearchBarContainer from './container/SearchBarContainer';
 import FilteringBarContainer from './container/FilteringBarContainer';
 import DateContainer from './container/DateContainer';
+import SortContainer from './container/SortContainer';
 import styled from 'styled-components';
 
 const App = () => {
@@ -13,6 +14,7 @@ const App = () => {
         <SearchBarContainer />
         <DateContainer />
         <FilteringBarContainer />
+        <SortContainer />
       </Container>
     </Wrapper>
   );
@@ -27,6 +29,6 @@ const Container = styled.div`
   width: 107.7rem;
   height: 96rem;
   padding: 0 9.509rem;
-  background-color: ${({ theme }) => theme.CusColor.black};
+  background-color: ${({ theme }) => theme.CusColor.main};
 `;
 export default App;
