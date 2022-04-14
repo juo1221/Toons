@@ -1,16 +1,16 @@
-import React, { useState } from "react";
-import styled from "styled-components";
-import { ReactComponent as NaverLogo } from "../assets/logo-naver.svg";
-import { ReactComponent as KakaoLogo } from "../assets/logo-kakao.svg";
-import { ReactComponent as KakaoPageLogo } from "../assets/logo-kakaoPage.svg";
-import { FcLike } from "react-icons/fc";
+import React, { useState } from 'react';
+import styled from 'styled-components';
+import { ReactComponent as NaverLogo } from '../assets/logo-naver.svg';
+import { ReactComponent as KakaoLogo } from '../assets/logo-kakao.svg';
+import { ReactComponent as KakaoPageLogo } from '../assets/logo-kakaoPage.svg';
+import { FcLike } from 'react-icons/fc';
 const TabView = () => {
-  const [clickedText, setClickedText] = useState("네이버");
+  const [clickedText, setClickedText] = useState('네이버');
   const arr = [
-    { logo: <NaverLogo />, name: "네이버" },
-    { logo: <KakaoLogo className="k-logo" />, name: "카카오" },
-    { logo: <KakaoPageLogo />, name: "카카오페이지" },
-    { logo: <FcLike className="like" />, name: "즐겨찾기" },
+    { logo: <NaverLogo />, name: '네이버' },
+    { logo: <KakaoLogo className="k-logo" />, name: '카카오' },
+    { logo: <KakaoPageLogo />, name: '카카오페이지' },
+    { logo: <FcLike className="like" />, name: '즐겨찾기' },
   ];
   const setOnclickTab = (text: any) => {
     setClickedText(text);
@@ -18,11 +18,7 @@ const TabView = () => {
 
   const tabList = (): JSX.Element[] => {
     return arr.map((obj, idx) => (
-      <Tab
-        key={idx}
-        tabState={obj.name === clickedText}
-        onClick={() => setOnclickTab(obj.name)}
-      >
+      <Tab key={idx} tabState={obj.name === clickedText} onClick={() => setOnclickTab(obj.name)}>
         {obj.logo}
         <span>{obj.name}</span>
       </Tab>
@@ -31,15 +27,15 @@ const TabView = () => {
   return (
     <Aside>
       <Title>Toons</Title>
-      <Content>{"네이버, 카카오, 카카오페이지 \n 웹툰을 검색해보세요"}</Content>
+      <Content>{'네이버, 카카오, 카카오페이지 \n 웹툰을 검색해보세요'}</Content>
       {tabList()}
     </Aside>
   );
 };
 
-interface ITab {
+type ITab = {
   tabState: boolean;
-}
+};
 
 const Aside = styled.div`
   width: 36.4rem;
@@ -83,8 +79,7 @@ const Content = styled.p`
 const Tab = styled.div<ITab>`
   width: 330px;
   height: 61px;
-  background: ${({ tabState, theme }) =>
-    tabState ? theme.CusColor.yellow : theme.CusColor.black};
+  background: ${({ tabState, theme }) => (tabState ? theme.CusColor.yellow : theme.CusColor.black)};
   border-radius: 5px;
   font-size: 2.5rem;
   padding: 1.857rem 2.7rem;
@@ -92,7 +87,7 @@ const Tab = styled.div<ITab>`
   cursor: pointer;
   margin-top: 5.3rem;
   color: ${({ theme }) => theme.CusColor.white};
-  ${({ theme }) => theme.CusFlex("none")}
+  ${({ theme }) => theme.CusFlex('none')}
   span {
     margin-left: 1.2rem;
   }

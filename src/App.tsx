@@ -1,6 +1,7 @@
 import React from "react";
 import TabContainer from "./container/TabContainer";
 import SearchBarContainer from "./container/SearchBarContainer";
+import DateContainer from "./container/DateContainer";
 import styled from "styled-components";
 
 const App = () => {
@@ -9,6 +10,7 @@ const App = () => {
       <TabContainer />
       <Container>
         <SearchBarContainer />
+        <DateContainer />
       </Container>
     </Wrapper>
   );
