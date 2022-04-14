@@ -5,6 +5,7 @@ import FilteringBarContainer from './container/FilteringBarContainer';
 import DateContainer from './container/DateContainer';
 import SortContainer from './container/SortContainer';
 import CardListContainer from './container/CardListContainer';
+import CardHoverContainer from './container/CardHoverContainer';
 import styled from 'styled-components';
 
 const App = () => {
@@ -18,6 +19,7 @@ const App = () => {
         <SortContainer />
         <CardListContainer />
       </Container>
+      <CardHoverContainer />
     </Wrapper>
   );
 };
