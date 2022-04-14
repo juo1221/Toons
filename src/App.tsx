@@ -4,6 +4,7 @@ import SearchBarContainer from './container/SearchBarContainer';
 import FilteringBarContainer from './container/FilteringBarContainer';
 import DateContainer from './container/DateContainer';
 import SortContainer from './container/SortContainer';
+import CardListContainer from './container/CardListContainer';
 import styled from 'styled-components';
 
 const App = () => {
@@ -15,6 +16,7 @@ const App = () => {
         <DateContainer />
         <FilteringBarContainer />
         <SortContainer />
+        <CardListContainer />
       </Container>
     </Wrapper>
   );

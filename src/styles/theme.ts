@@ -1,9 +1,10 @@
 import { css } from 'styled-components';
 
-const CusFlex = ($justify = 'center', $align = 'center') => css`
+const CusFlex = ($justify = 'center', $align = 'center', $direc = 'row') => css`
   display: flex;
   justify-content: ${$justify};
   align-items: ${$align};
+  flex-direction: ${$direc};
 `;
 
 const CusColor = {
