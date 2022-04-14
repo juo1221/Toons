@@ -5,7 +5,6 @@ import { ReactComponent as KakaoLogo } from "../assets/logo-kakao.svg";
 import { ReactComponent as KakaoPageLogo } from "../assets/logo-kakaoPage.svg";
 import { FcLike } from "react-icons/fc";
 const TabView = () => {
-
   const [clickedText, setClickedText] = useState("네이버");
   const arr = [
     { logo: <NaverLogo />, name: "네이버" },
@@ -16,20 +15,24 @@ const TabView = () => {
   const setOnclickTab = (text: any) => {
     setClickedText(text);
   };
+
+  const tabList = (): JSX.Element[] => {
+    return arr.map((obj, idx) => (
+      <Tab
+        key={idx}
+        tabState={obj.name === clickedText}
+        onClick={() => setOnclickTab(obj.name)}
+      >
+        {obj.logo}
+        <span>{obj.name}</span>
+      </Tab>
+    ));
+  };
   return (
     <Aside>
       <Title>Toons</Title>
       <Content>{"네이버, 카카오, 카카오페이지 \n 웹툰을 검색해보세요"}</Content>
-      {arr.map((obj, idx) => (
-        <Tab
-          key={idx}
-          tabState={obj.name === clickedText}
-          onClick={() => setOnclickTab(obj.name)}
-        >
-          {obj.logo}
-          <span>{obj.name}</span>
-        </Tab>
-      ))}
+      {tabList()}
     </Aside>
   );
 };

@@ -4,10 +4,8 @@ import styled from "styled-components";
 const App = () => {
   return (
     <Wrapper>
-      <Container>
-        <TabContainer />
-        {/* <MainContainer /> */}
-      </Container>
+      <TabContainer />
+      <div>{/* <MainContainer /> */}</div>
     </Wrapper>
   );
 };
