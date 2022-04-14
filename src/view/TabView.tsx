@@ -42,7 +42,6 @@ interface ITab {
 }
 
 const Aside = styled.div`
-  position: absolute;
   width: 36.4rem;
   height: 96rem;
   background-color: ${({ theme }) => theme.CusColor.black};

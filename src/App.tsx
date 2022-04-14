@@ -1,11 +1,15 @@
 import React from "react";
 import TabContainer from "./container/TabContainer";
+import SearchBarContainer from "./container/SearchBarContainer";
 import styled from "styled-components";
+
 const App = () => {
   return (
     <Wrapper>
       <TabContainer />
-      <div>{/* <MainContainer /> */}</div>
+      <Container>
+        <SearchBarContainer />
+      </Container>
     </Wrapper>
   );
 };
@@ -16,7 +20,7 @@ const Wrapper = styled.div`
   ${({ theme }) => theme.CusFlex()}
 `;
 const Container = styled.div`
-  width: 144rem;
+  width: 107.7rem;
   height: 96rem;
   background-color: ${({ theme }) => theme.CusColor.black};
 `;
