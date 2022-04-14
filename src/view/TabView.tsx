@@ -86,6 +86,7 @@ const Tab = styled.div<ITab>`
   margin: auto;
   cursor: pointer;
   margin-top: 5.3rem;
+  transition: all 0.2s ease-in-out;
   color: ${({ theme }) => theme.CusColor.white};
   ${({ theme }) => theme.CusFlex('none')}
   span {

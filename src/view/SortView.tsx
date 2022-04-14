@@ -24,8 +24,8 @@ type IButton = {
 const Container = styled.div`
   width: 20.019rem;
   height: 4rem;
+  border: 1px solid ${({ theme }) => theme.CusColor.white};
   border-radius: 0.5rem;
-  background-color: ${({ theme }) => theme.CusColor.gray};
   padding: 1rem 2rem;
   ${({ theme }) => theme.CusFlex('space-between')}
 `;
@@ -35,11 +35,12 @@ const Button = styled.button<IButton>`
   height: 2.5rem;
   border-radius: 0.5rem;
   font-size: 1.4rem;
+  color: ${({ clickedText, theme }) => theme.CusColor.gray};
   ${({ clickedText, theme }) =>
     clickedText &&
     css`
       background-color: ${theme.CusColor.yellow};
       color: ${theme.CusColor.white};
-    `}
+    `};
 `;
 export default SortView;

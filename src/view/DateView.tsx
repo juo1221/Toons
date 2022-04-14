@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 const DateView = () => {
   const dates = ['월', '화', '수', '목', '금', '토', '일', '완결'];
@@ -35,7 +35,9 @@ const Text = styled.div<IText>`
   width: 5.005rem;
   height: 5rem;
   border-radius: 50%;
-  background-color: ${({ clickedText, theme }) => clickedText && theme.CusColor.yellow};
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
   ${({ theme }) => theme.CusFlex('center', 'center')};
+  background-color: ${({ clickedText, theme }) => clickedText && theme.CusColor.yellow};
 `;
 export default DateView;

@@ -13,10 +13,16 @@ const App = () => {
     <Wrapper>
       <TabContainer />
       <Container>
-        <SearchBarContainer />
-        <DateContainer />
-        <FilteringBarContainer />
-        <SortContainer />
+        <div style={{ display: 'flex', justifyContent: 'flex-end', marginTop: '4rem' }}>
+          <SearchBarContainer />
+        </div>
+        <div style={{ marginTop: '2.8rem' }}>
+          <DateContainer />
+        </div>
+        <Box>
+          <FilteringBarContainer />
+          <SortContainer />
+        </Box>
         <CardListContainer />
       </Container>
       <CardHoverContainer />
@@ -34,5 +40,10 @@ const Container = styled.div`
   height: 96rem;
   padding: 0 9.509rem;
   background-color: ${({ theme }) => theme.CusColor.main};
+`;
+const Box = styled.div`
+  margin-top: 3.7rem;
+  margin-bottom: 4.8rem;
+  ${({ theme }) => theme.CusFlex('space-between')}
 `;
 export default App;

@@ -29,8 +29,9 @@ const Input = styled.input`
   width: 20.719rem;
   height: 2.5rem;
   font-size: 2rem;
-  text-align: center;
+  margin-left: 0.4rem;
   border: none;
+  outline: none;
   color: ${({ theme }) => theme.CusColor.gray};
 `;
 export default SearchBarView;

@@ -30,6 +30,7 @@ const Input = styled.input`
   font-size: 1.5rem;
   margin-left: 0.4rem;
   border: none;
+  outline: none;
   color: ${({ theme }) => theme.CusColor.gray};
 `;
 export default FilteringBarView;
