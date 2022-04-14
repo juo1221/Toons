@@ -1,36 +1,35 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import { AiOutlineSearch } from 'react-icons/ai';
 
-const SearchBarView = () => {
+const FilteringBarView = () => {
   return (
     <div>
       <Bar>
         <AiOutlineSearch />
-        <Input placeholder="작가,작품명 검색하기" />
+        <Input placeholder="필터링하기" />
       </Bar>
     </div>
   );
 };
 
 const Bar = styled.div`
-  width: 39.837rem;
-  height: 5rem;
+  width: 20.019rem;
+  height: 4rem;
   border-radius: 2rem;
-  padding: 1.3rem;
-  ${({ theme }) => theme.CusFlex('none', 'none')}
+  padding: 1.902rem 1rem;
+  ${({ theme }) => theme.CusFlex('none')}
   background-color: ${({ theme }) => theme.CusColor.white};
   svg {
-    width: 2.5rem;
-    height: 2.5rem;
+    width: 2rem;
+    height: 2rem;
   }
 `;
 const Input = styled.input`
-  width: 20.719rem;
-  height: 2.5rem;
-  font-size: 2rem;
-  text-align: center;
+  height: 1.8rem;
+  font-size: 1.5rem;
+  margin-left: 0.4rem;
   border: none;
   color: ${({ theme }) => theme.CusColor.gray};
 `;
-export default SearchBarView;
+export default FilteringBarView;

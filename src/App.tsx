@@ -1,8 +1,9 @@
-import React from "react";
-import TabContainer from "./container/TabContainer";
-import SearchBarContainer from "./container/SearchBarContainer";
-import DateContainer from "./container/DateContainer";
-import styled from "styled-components";
+import React from 'react';
+import TabContainer from './container/TabContainer';
+import SearchBarContainer from './container/SearchBarContainer';
+import FilteringBarContainer from './container/FilteringBarContainer';
+import DateContainer from './container/DateContainer';
+import styled from 'styled-components';
 
 const App = () => {
   return (
@@ -11,6 +12,7 @@ const App = () => {
       <Container>
         <SearchBarContainer />
         <DateContainer />
+        <FilteringBarContainer />
       </Container>
     </Wrapper>
   );
@@ -24,6 +26,7 @@ const Wrapper = styled.div`
 const Container = styled.div`
   width: 107.7rem;
   height: 96rem;
+  padding: 0 9.509rem;
   background-color: ${({ theme }) => theme.CusColor.black};
 `;
 export default App;
