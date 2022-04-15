@@ -7,17 +7,23 @@ class WebToonDataStore {
   _rootStore: IRootStore;
   _webToonData = WebToonData;
   _response: TData[] = [];
+  _map = new Map();
   constructor(root: IRootStore) {
     console.log('Created: WebToonDataStore!');
     this._rootStore = root;
     makeAutoObservable(this, undefined, { autoBind: true });
   }
   async getList(platform: string = 'naver', day: number) {
-    const response = await this._webToonData.getList(`${platform}/week?day=${day - 1 < 0 ? 6 : day - 1}`);
-    runInAction(() => {
-      console.log(1);
-      this._response = response;
-    });
+    if (this._map.has(day)) {
+      this._response = this._map.get(day);
+    } else {
+      const response = await this._webToonData.getList(day === 7 ? `${platform}/finished` : `${platform}/week?day=${day}`);
+      this._map.set(day, response);
+      runInAction(() => {
+        console.log(1);
+        this._response = response;
+      });
+    }
   }
   search(name: string) {
     return this._webToonData.getList(`search?keyword=${name}`);
