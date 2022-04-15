@@ -16,7 +16,7 @@ const CardListView = () => {
   ];
   const cardList = () => {
     return mocks.map((card) => {
-      return <CardView src={card.src} title={card.title} />;
+      return <CardView key={card.id} src={card.src} title={card.title} />;
     });
   };
   return <Container>{cardList()}</Container>;

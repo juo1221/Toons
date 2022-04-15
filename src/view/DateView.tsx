@@ -1,9 +1,14 @@
 import React, { useState } from 'react';
 import styled, { css } from 'styled-components';
+import { observer } from 'mobx-react-lite';
 
-const DateView = () => {
+type TDateView = {
+  day: string;
+};
+
+const DateView: React.FC<TDateView> = observer(({ day }) => {
   const dates = ['월', '화', '수', '목', '금', '토', '일', '완결'];
-  const [clickedText, setClickedText] = useState('월');
+  const [clickedText, setClickedText] = useState(day);
 
   const setOnClick = (text: string) => {
     setClickedText(text);
@@ -17,8 +22,9 @@ const DateView = () => {
     ));
   };
   return <Container>{dateList()}</Container>;
-};
-type IText = {
+});
+
+type TText = {
   clickedText: boolean;
 };
 
@@ -29,7 +35,7 @@ const Container = styled.div`
   ${({ theme }) => theme.CusFlex('space-between')}
   color: ${({ theme }) => theme.CusColor.white};
 `;
-const Text = styled.div<IText>`
+const Text = styled.div<TText>`
   font-weight: 500;
   font-size: 2rem;
   width: 5.005rem;

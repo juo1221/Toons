@@ -1,12 +1,5 @@
-const { alias } = require("react-app-rewire-alias");
-
-// 사용자 정의 webpack 설정
+const { alias, configPaths } = require('react-app-rewire-alias');
 
 module.exports = function override(config) {
-  alias({
-    "@hooks": "src/hooks",
-    "@utils": "src/utils",
-  })(config);
-
-  return config;
+  return alias(configPaths('./tsconfig.paths.json'))(config);
 };
