@@ -8,10 +8,13 @@ const CardListContainer = observer(() => {
   const {
     webToonDataStore,
     dateStore: { dayNumber },
+    platFormStore,
   } = useStores();
+
   useEffect(() => {
-    webToonDataStore.getList('naver', dayNumber);
-  }, []);
+    webToonDataStore.getList(platFormStore.platForm, dayNumber);
+  }, [platFormStore.platForm]);
+
   return <CardListView list={webToonDataStore._response} />;
 });
 

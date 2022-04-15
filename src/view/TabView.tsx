@@ -1,29 +1,68 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { ReactComponent as NaverLogo } from '../assets/logo-naver.svg';
 import { ReactComponent as KakaoLogo } from '../assets/logo-kakao.svg';
 import { ReactComponent as KakaoPageLogo } from '../assets/logo-kakaoPage.svg';
 import { FcLike } from 'react-icons/fc';
-const TabView = () => {
-  const [clickedText, setClickedText] = useState('네이버');
+import { observer } from 'mobx-react-lite'
+
+type TTabView = {
+  onSetPlatForm: (newPlatForm: string) => void;
+  platform: string;
+};
+
+const TabView: React.FC<TTabView> = observer(({ onSetPlatForm, platform }) => {
+  const [clickedText, setClickedText] = useState(platform);
   const arr = [
-    { logo: <NaverLogo />, name: '네이버' },
-    { logo: <KakaoLogo className="k-logo" />, name: '카카오' },
-    { logo: <KakaoPageLogo />, name: '카카오페이지' },
-    { logo: <FcLike className="like" />, name: '즐겨찾기' },
+    { logo: <NaverLogo />, name: '네이버 웹툰' },
+    { logo: <KakaoLogo className="k-logo" />, name: '카카오 웹툰' },
+    { logo: <KakaoPageLogo />, name: '카카오페이지 웹툰' },
+    { logo: <FcLike className="like" />, name: '마이리스트' },
   ];
-  const setOnclickTab = (text: any) => {
+  const setOnclickTab = (text: string) => {
+    switch (text) {
+      case '네이버 웹툰':
+        text = 'naver';
+        break;
+      case '카카오 웹툰':
+        text = 'kakao';
+        break;
+      case '카카오페이지 웹툰':
+        text = 'kakao-page';
+        break;
+      default:
+    }
     setClickedText(text);
+  };
+  const chageToOriginal = (text: string) => {
+    switch (text) {
+      case 'naver':
+        text = '네이버 웹툰';
+        break;
+      case 'kakao':
+        text = '카카오 웹툰';
+        break;
+      case 'kakao-page':
+        text = '카카오페이지 웹툰';
+        break;
+      default:
+    }
+    return text;
   };
 
   const tabList = (): JSX.Element[] => {
     return arr.map((obj, idx) => (
-      <Tab key={idx} tabState={obj.name === clickedText} onClick={() => setOnclickTab(obj.name)}>
+      <Tab key={idx} tabState={obj.name === chageToOriginal(clickedText)} onClick={() => setOnclickTab(obj.name)}>
         {obj.logo}
         <span>{obj.name}</span>
       </Tab>
     ));
   };
+
+  useEffect(() => {
+    onSetPlatForm(clickedText);
+  }, [clickedText]);
+
   return (
     <Aside>
       <Title>Toons</Title>
@@ -31,7 +70,7 @@ const TabView = () => {
       {tabList()}
     </Aside>
   );
-};
+});
 
 type ITab = {
   tabState: boolean;

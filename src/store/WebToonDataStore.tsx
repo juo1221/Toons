@@ -14,19 +14,25 @@ class WebToonDataStore {
     makeAutoObservable(this, undefined, { autoBind: true });
   }
   async getList(platform: string = 'naver', day: number) {
-    if (this._map.has(day)) {
-      this._response = this._map.get(day);
+    if (this._map.has(`${platform}${day}`)) {
+      this._response = this._map.get(`${platform}${day}`);
     } else {
-      const response = await this._webToonData.getList(day === 7 ? `${platform}/finished` : `${platform}/week?day=${day}`);
-      this._map.set(day, response);
-      runInAction(() => {
-        console.log(1);
-        this._response = response;
-      });
+      try {
+        const response = await this._webToonData.getList(day === 7 ? `${platform}/finished` : `${platform}/week?day=${day}`);
+        this._map.set(`${platform}${day}`, response);
+        runInAction(() => {
+          this._response = response;
+        });
+      } catch (e) {
+        console.log(e, `네트워크 요청 에러! params : ${day === 7 ? `${platform}/finished` : `${platform}/week?day=${day}`}`);
+      }
     }
   }
   search(name: string) {
     return this._webToonData.getList(`search?keyword=${name}`);
+  }
+  get rootStore() {
+    return this._rootStore;
   }
 }
 

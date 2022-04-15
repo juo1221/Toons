@@ -5,7 +5,7 @@ import { observer } from 'mobx-react-lite';
 type TDateView = {
   day: string;
   onSetDayNumber: (value: number) => void;
-  onGetList: (platform: string, day: number) => void;
+  onGetList: (day: number) => void;
 };
 
 const DateView: React.FC<TDateView> = observer(({ day, onSetDayNumber, onGetList }) => {
@@ -17,7 +17,7 @@ const DateView: React.FC<TDateView> = observer(({ day, onSetDayNumber, onGetList
   useEffect(() => {
     const n = dates.indexOf(clickedText);
     onSetDayNumber(n);
-    onGetList('naver', n);
+    onGetList(n);
   }, [clickedText]);
   const dateList = (): JSX.Element[] => {
     return dates.map((date, idx) => (

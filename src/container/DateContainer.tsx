@@ -3,12 +3,13 @@ import DateView from '../view/DateView';
 import { observer } from 'mobx-react-lite';
 import { useStores } from 'context/RootContext';
 const DateContainer = observer(() => {
-  const { dateStore, webToonDataStore } = useStores();
+  const { dateStore, webToonDataStore, platFormStore } = useStores();
+
   const onSetDayNumber = (value: number) => {
     dateStore.dayNumber = value;
   };
-  const onGetList = (platform: string, day: number) => {
-    webToonDataStore.getList(platform, day);
+  const onGetList = (day: number) => {
+    webToonDataStore.getList(platFormStore.platForm, day);
   };
   return <DateView day={dateStore.day} onSetDayNumber={onSetDayNumber} onGetList={onGetList} />;
 });

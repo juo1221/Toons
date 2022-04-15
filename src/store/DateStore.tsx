@@ -9,6 +9,9 @@ class DateStore {
     makeAutoObservable(this, undefined, { autoBind: true });
     this._rootStore = root;
   }
+  get rootStore() {
+    return this._rootStore;
+  }
   get day(): string {
     return ['월', '화', '수', '목', '금', '토', '일'][this._dayNumber];
   }
