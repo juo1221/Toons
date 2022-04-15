@@ -2,25 +2,21 @@ import React from 'react';
 import styled from 'styled-components';
 import { v4 as uuidv4 } from 'uuid';
 import CardView from './CardView';
+import { TData } from '../api/WebToonData';
+import { observer } from 'mobx-react-lite';
 
-const CardListView = () => {
-  const mocks = [
-    { src: '/image.jpeg', title: '윈드 브레이커', id: uuidv4() },
-    { src: '/image.jpeg', title: '윈드 브레이커', id: uuidv4() },
-    { src: '/image.jpeg', title: '윈드 브레이커', id: uuidv4() },
-    { src: '/image.jpeg', title: '윈드 브레이커', id: uuidv4() },
-    { src: '/image.jpeg', title: '윈드 브레이커', id: uuidv4() },
-    { src: '/image.jpeg', title: '윈드 브레이커', id: uuidv4() },
-    { src: '/image.jpeg', title: '윈드 브레이커', id: uuidv4() },
-    { src: '/image.jpeg', title: '윈드 브레이커', id: uuidv4() },
-  ];
+type TCardListView = {
+  list: TData[];
+};
+
+const CardListView: React.FC<TCardListView> = observer(({ list }) => {
   const cardList = () => {
-    return mocks.map((card) => {
-      return <CardView key={card.id} src={card.src} title={card.title} />;
+    return list.map((info) => {
+      return <CardView key={info._id} src={info.img} title={info.title} />;
     });
   };
   return <Container>{cardList()}</Container>;
-};
+});
 
 const Container = styled.div`
   display: grid;

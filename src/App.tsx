@@ -25,7 +25,7 @@ const App = () => {
         </Box>
         <CardListContainer />
       </Container>
-      <CardHoverContainer />
+      {/* <CardHoverContainer /> */}
     </Wrapper>
   );
 };
@@ -40,6 +40,7 @@ const Container = styled.div`
   height: 96rem;
   padding: 0 9.509rem;
   background-color: ${({ theme }) => theme.CusColor.main};
+  overflow: auto;
 `;
 const Box = styled.div`
   margin-top: 3.7rem;

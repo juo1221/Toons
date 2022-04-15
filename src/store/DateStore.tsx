@@ -12,6 +12,9 @@ class DateStore {
   get day(): string {
     return ['일', '월', '화', '수', '목', '금', '토'][this._date.getDay()];
   }
+  get dayNumber(): number {
+    return this._date.getDay();
+  }
 }
 
 export default DateStore;
