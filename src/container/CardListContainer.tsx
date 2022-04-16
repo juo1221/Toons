@@ -2,20 +2,22 @@ import React, { useEffect } from 'react';
 import CardListView from '../view/CardListView';
 import { observer } from 'mobx-react-lite';
 import { useStores } from 'context/RootContext';
+import { TData } from '../api/WebToonData';
 // import { toJS } from 'mobx';
 
 const CardListContainer = observer(() => {
-  const {
-    webToonDataStore,
-    dateStore: { dayNumber },
-    platFormStore,
-  } = useStores();
+  const { cardListStore, dateStore, platFormStore, myListStore } = useStores();
+  const dayNumber = dateStore.dayNumObj.dayNumber;
 
   useEffect(() => {
-    webToonDataStore.getList(platFormStore.platForm, dayNumber);
+    if (platFormStore.platForm === 'myList') {
+      // myListStore.update();
+    } else {
+      cardListStore.load(platFormStore.platForm, dayNumber);
+    }
   }, [platFormStore.platForm]);
 
-  return <CardListView list={webToonDataStore._response} />;
+  return <CardListView cardList={(platFormStore.platForm === 'myList' ? myListStore : cardListStore).response} />;
 });
 
 export default CardListContainer;
