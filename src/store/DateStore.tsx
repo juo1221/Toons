@@ -1,6 +1,9 @@
 import { makeAutoObservable } from 'mobx';
 import { IRootStore } from './RootStore';
 
+type NumObj = {
+  dayNumber: number;
+};
 class DateStore {
   private _rootStore: IRootStore;
   private _dayNumber: number = new Date().getDay() - 1 < 0 ? 6 : new Date().getDay() - 1;
@@ -15,8 +18,8 @@ class DateStore {
   get day(): string {
     return ['월', '화', '수', '목', '금', '토', '일'][this._dayNumber];
   }
-  get dayNumber(): number {
-    return this._dayNumber;
+  get dayNumObj(): NumObj {
+    return { dayNumber: this._dayNumber };
   }
   set dayNumber(value: number) {
     this._dayNumber = value;

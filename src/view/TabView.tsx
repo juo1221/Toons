@@ -4,7 +4,7 @@ import { ReactComponent as NaverLogo } from '../assets/logo-naver.svg';
 import { ReactComponent as KakaoLogo } from '../assets/logo-kakao.svg';
 import { ReactComponent as KakaoPageLogo } from '../assets/logo-kakaoPage.svg';
 import { FcLike } from 'react-icons/fc';
-import { observer } from 'mobx-react-lite'
+import { observer } from 'mobx-react-lite';
 
 type TTabView = {
   onSetPlatForm: (newPlatForm: string) => void;
@@ -30,6 +30,9 @@ const TabView: React.FC<TTabView> = observer(({ onSetPlatForm, platform }) => {
       case '카카오페이지 웹툰':
         text = 'kakao-page';
         break;
+      case '마이리스트':
+        text = 'myList';
+        break;
       default:
     }
     setClickedText(text);
@@ -44,6 +47,9 @@ const TabView: React.FC<TTabView> = observer(({ onSetPlatForm, platform }) => {
         break;
       case 'kakao-page':
         text = '카카오페이지 웹툰';
+        break;
+      case 'myList':
+        text = '마이리스트';
         break;
       default:
     }

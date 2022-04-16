@@ -5,10 +5,10 @@ import { observer } from 'mobx-react-lite';
 type TDateView = {
   day: string;
   onSetDayNumber: (value: number) => void;
-  onGetList: (day: number) => void;
+  onloadList: (day: number) => void;
 };
 
-const DateView: React.FC<TDateView> = observer(({ day, onSetDayNumber, onGetList }) => {
+const DateView: React.FC<TDateView> = observer(({ day, onSetDayNumber, onloadList }) => {
   const dates = ['월', '화', '수', '목', '금', '토', '일', '완결'];
   const [clickedText, setClickedText] = useState(day);
   const setOnClick = (text: string) => {
@@ -17,7 +17,7 @@ const DateView: React.FC<TDateView> = observer(({ day, onSetDayNumber, onGetList
   useEffect(() => {
     const n = dates.indexOf(clickedText);
     onSetDayNumber(n);
-    onGetList(n);
+    onloadList(n);
   }, [clickedText]);
   const dateList = (): JSX.Element[] => {
     return dates.map((date, idx) => (
