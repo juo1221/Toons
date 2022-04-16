@@ -1,30 +1,36 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { FaHeart } from 'react-icons/fa';
+import { TData } from '../api/WebToonData';
+import { observer } from 'mobx-react-lite';
 
 type TCard = {
-  src: string;
-  title: string;
+  info: TData & Like;
+  onToggleList: () => void;
+};
+type Like = {
+  isLiked: boolean;
 };
 
-const CardView: React.FC<TCard> = ({ src, title }) => {
-  const [isLiked, setIsLiked] = useState<boolean>(false);
+const CardView: React.FC<TCard> = observer(({ info, onToggleList }) => {
   const setOnClick = () => {
-    setIsLiked(!isLiked);
+    onToggleList();
   };
+
   return (
     <Card>
       <ImageBox>
-        <img src={src} alt="윈드브레이커" />
+        <img src={info.img} alt="이미지" />
       </ImageBox>
-      <Title>{title}</Title>
-      <Sub isLiked={isLiked}>
+      <Title>{info.title}</Title>
+      <Sub isLiked={info.isLiked}>
         <FaHeart onClick={setOnClick} />
       </Sub>
     </Card>
   );
-};
-type ISub = {
+});
+
+type TSub = {
   isLiked: boolean;
 };
 
@@ -53,7 +59,7 @@ const Title = styled.div`
   background-color: ${({ theme }) => theme.CusColor.modalBack};
   color: ${({ theme }) => theme.CusColor.white};
 `;
-const Sub = styled.div<ISub>`
+const Sub = styled.div<TSub>`
   height: 2.5rem;
   background-color: ${({ theme }) => theme.CusColor.black};
   padding: 0.5rem 1rem;

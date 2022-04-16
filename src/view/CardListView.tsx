@@ -2,20 +2,23 @@ import React from 'react';
 import styled from 'styled-components';
 import { v4 as uuidv4 } from 'uuid';
 import CardView from './CardView';
+import CardStore from 'store/CardStore';
 import { TData } from '../api/WebToonData';
 import { observer } from 'mobx-react-lite';
 
 type TCardListView = {
-  list: TData[];
+  cardList: CardStore[];
 };
 
-const CardListView: React.FC<TCardListView> = observer(({ list }) => {
-  const cardList = () => {
-    return list.map((info) => {
-      return <CardView key={info._id} src={info.img} title={info.title} />;
+const CardListView: React.FC<TCardListView> = observer(({ cardList }) => {
+  const cardListF = () => {
+    return cardList.map((card) => {
+      const isLiked = card.isLiked.isLiked;
+      const info = card.data.info;
+      return <CardView key={info._id} info={{ ...info, isLiked }} onToggleList={card.toggle} />;
     });
   };
-  return <Container>{cardList()}</Container>;
+  return <Container>{cardListF()}</Container>;
 });
 
 const Container = styled.div`
