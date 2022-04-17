@@ -19,7 +19,13 @@ const CardListContainer = observer(() => {
     }
   }, [platFormStore.platForm]);
 
-  return <CardListView cardList={(platFormStore.platForm === 'myList' ? myListStore : cardListStore).response} onToggleMyList={onToggleMyList} />;
+  return (
+    <CardListView
+      cardList={(platFormStore.platForm === 'myList' ? myListStore : cardListStore).response}
+      onToggleMyList={onToggleMyList}
+      filtedText={cardListStore.filteredText.text}
+    />
+  );
 });
 
 export default CardListContainer;

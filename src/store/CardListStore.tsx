@@ -12,6 +12,7 @@ class CardListStore {
   private _listMap = new Map<string, Set<CardStore>>();
   private _idMap = new Map<DataId, CardStore>();
   private _response = new Set<CardStore>();
+  private _filteredText: string = '';
 
   constructor(root: IRootStore) {
     console.log('Created: CardListStore!');
@@ -40,16 +41,22 @@ class CardListStore {
       }
     }
   }
+
   /* 변경 필요 */
   search(name: string) {
     return this._webToonData.getList(`search?keyword=${name}`);
   }
-
   get rootStore() {
     return this._rootStore;
   }
   get response() {
     return Array.from(this._response);
+  }
+  get filteredText() {
+    return { text: this._filteredText };
+  }
+  setFilteredText(text: string) {
+    this._filteredText = text;
   }
 }
 
