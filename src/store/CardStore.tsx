@@ -18,6 +18,9 @@ class CardStore {
   search(name: string) {
     return this._webToonData.getList(`search?keyword=${name}`);
   }
+  get isLidkedStore(): CardStore | null {
+    return this._isLiked ? this : null;
+  }
   get isLiked() {
     return { isLiked: this._isLiked };
   }

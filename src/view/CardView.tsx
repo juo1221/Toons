@@ -3,18 +3,22 @@ import styled from 'styled-components';
 import { FaHeart } from 'react-icons/fa';
 import { TData } from '../api/WebToonData';
 import { observer } from 'mobx-react-lite';
+import CardStore from 'store/CardStore';
 
 type TCard = {
   info: TData & Like;
   onToggleList: () => void;
+  cardStore: CardStore;
+  onToggleMyList: (card: CardStore) => void;
 };
 type Like = {
   isLiked: boolean;
 };
 
-const CardView: React.FC<TCard> = observer(({ info, onToggleList }) => {
+const CardView: React.FC<TCard> = observer(({ info, onToggleList, onToggleMyList, cardStore }) => {
   const setOnClick = () => {
     onToggleList();
+    onToggleMyList(cardStore);
   };
 
   return (

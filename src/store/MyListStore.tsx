@@ -5,29 +5,29 @@ import CardStore from './CardStore';
 import { toJS } from 'mobx';
 class MyListStore {
   private _rootStore: IRootStore;
-  private _response: CardStore[] = [];
-  private _set = new Set<CardStore>();
+  private _myList = new Set<CardStore>();
+  private _response = new Set<CardStore>();
 
   constructor(root: IRootStore) {
     makeAutoObservable(this, undefined, { autoBind: true });
     this._rootStore = root;
   }
-  get rootStore() {
-    return this._rootStore;
+  update() {
+    this._response = this._myList;
   }
-  getList() {
-    this._response = Array.from(this._set);
-  }
-  toggle(info: TData) {
-    // info.isLiked = !info.isLiked;
-    // if (this._set.has(info)) {
-    //   this._set.delete(info);
-    // } else {
-    //   this._set.add(info);
-    // }
+  toggle(card: CardStore) {
+    if (this._myList.has(card)) {
+      this._myList.delete(card);
+    } else {
+      this._myList.add(card);
+    }
   }
   get response() {
-    return [...this._response];
+    console.log(1);
+    return Array.from(this._response);
+  }
+  get rootStore() {
+    return this._rootStore;
   }
 }
 
