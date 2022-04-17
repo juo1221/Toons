@@ -41,6 +41,11 @@ const Container = styled.div`
   padding: 0 9.509rem;
   background-color: ${({ theme }) => theme.CusColor.main};
   overflow: auto;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+  &::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera*/
+  }
 `;
 const Box = styled.div`
   margin-top: 3.7rem;
