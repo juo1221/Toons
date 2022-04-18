@@ -1,10 +1,16 @@
 import React, { useState } from 'react';
 import styled, { css } from 'styled-components';
+import { observer } from 'mobx-react-lite';
 
-const SortView = () => {
+type TSortView = {
+  onSort: (criteria: string) => void;
+};
+
+const SortView: React.FC<TSortView> = observer(({ onSort }) => {
   const buttons = ['좋아요 순', '이름 순'];
   const [clickedText, setClickedText] = useState('좋아요순');
   const setOnClick = (text: string) => {
+    onSort(text);
     setClickedText(text);
   };
   const buttonList = (): JSX.Element[] => {
@@ -15,7 +21,7 @@ const SortView = () => {
     ));
   };
   return <Container>{buttonList()}</Container>;
-};
+});
 
 type IButton = {
   clickedText: boolean;
@@ -35,12 +41,10 @@ const Button = styled.button<IButton>`
   height: 2.5rem;
   border-radius: 0.5rem;
   font-size: 1.4rem;
-  color: ${({ clickedText, theme }) => theme.CusColor.gray};
-  ${({ clickedText, theme }) =>
-    clickedText &&
-    css`
-      background-color: ${theme.CusColor.yellow};
-      color: ${theme.CusColor.white};
-    `};
+  color: ${({ theme }) => theme.CusColor.gray};
+  &:active {
+    background-color: ${({ theme }) => theme.CusColor.yellow};
+    color: ${({ theme }) => theme.CusColor.white};
+  }
 `;
 export default SortView;
