@@ -4,6 +4,7 @@ module.exports = {
     extensions: ['ts', 'tsx', 'js', 'jsx'],
     alias: {
       context: path.resolve(__dirname, 'src/context'),
+      util: path.resolve(__dirname, 'src/utils'),
     },
   },
 };
