@@ -1,12 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
+import { observer } from 'mobx-react-lite';
 import { AiOutlineSearch } from 'react-icons/ai';
 
 type TFilteringBarView = {
   onFilter: (text: string) => void;
 };
 
-const FilteringBarView: React.FC<TFilteringBarView> = ({ onFilter }) => {
+const FilteringBarView: React.FC<TFilteringBarView> = observer(({ onFilter }) => {
   return (
     <div>
       <Bar>
@@ -15,7 +16,7 @@ const FilteringBarView: React.FC<TFilteringBarView> = ({ onFilter }) => {
       </Bar>
     </div>
   );
-};
+});
 
 const Bar = styled.div`
   width: 20.019rem;

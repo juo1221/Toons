@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { AiOutlineSearch } from 'react-icons/ai';
+import { observer } from 'mobx-react-lite';
 
-const SearchBarView = () => {
+const SearchBarView = observer(() => {
   return (
     <div>
       <Bar>
@@ -11,7 +12,7 @@ const SearchBarView = () => {
       </Bar>
     </div>
   );
-};
+});
 
 const Bar = styled.div`
   width: 39.837rem;
