@@ -7,10 +7,11 @@ import CardStore from 'store/CardStore';
 
 const CardListContainer = observer(() => {
   const { cardListStore, dateStore, platFormStore, myListStore } = useStores();
-  const dayNumber = dateStore.dayNumObj.dayNumber;
+  const dayNumber = dateStore.dayNum.result;
   const onToggleMyList = (card: CardStore) => {
     myListStore.toggle(card);
   };
+
   useEffect(() => {
     if (platFormStore.platForm === 'myList') {
       myListStore.update();
@@ -18,7 +19,6 @@ const CardListContainer = observer(() => {
       cardListStore.load(platFormStore.platForm, dayNumber);
     }
   }, [platFormStore.platForm]);
-
   return (
     <CardListView
       cardList={(platFormStore.platForm === 'myList' ? myListStore : cardListStore).response}
