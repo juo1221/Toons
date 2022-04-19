@@ -28,19 +28,19 @@ type IButton = {
 };
 
 const Container = styled.div`
-  width: 20.019rem;
-  height: 4rem;
-  border: 1px solid ${({ theme }) => theme.CusColor.white};
+  width: 20rem;
   border-radius: 0.5rem;
-  padding: 1rem 2rem;
+  padding: 0.5rem 1.5rem;
+
+  background-color: ${({ theme }) => theme.CusColor.black};
   ${({ theme }) => theme.CusFlex('space-between')}
 `;
 
 const Button = styled.button<IButton>`
-  width: 6.8rem;
-  height: 2.5rem;
-  border-radius: 0.5rem;
-  font-size: 1.4rem;
+  border-radius: 2rem;
+  font-size: 1.5rem;
+  padding: 1rem 1rem;
+  background-color: ${({ theme }) => theme.CusColor.black};
   color: ${({ theme }) => theme.CusColor.gray};
   &:active {
     background-color: ${({ theme }) => theme.CusColor.yellow};

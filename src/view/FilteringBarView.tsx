@@ -25,15 +25,15 @@ const FilteringBarView: React.FC<TFilteringBarView> = observer(({ onFilter, filt
 });
 
 const Bar = styled.div`
-  width: 20.019rem;
+  width: 23rem;
   height: 4rem;
   border-radius: 2rem;
   ${({ theme }) => theme.CusFlex()};
-  padding: 0.5rem;
+  padding: 0 2rem;
   background-color: ${({ theme }) => theme.CusColor.white};
   svg {
-    width: 2rem;
-    height: 2rem;
+    width: 1.5rem;
+    height: 1.5rem;
   }
   .closeBtn {
     cursor: pointer;
