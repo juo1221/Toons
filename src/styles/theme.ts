@@ -17,6 +17,12 @@ const hideScroll = () =>
     }
   `;
 
+const hideText = () => css`
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+`;
+
 const CusColor = {
   yellow: '#FEBF0C',
   red: '#FF0000',
@@ -31,4 +37,5 @@ export const theme = {
   CusFlex,
   hideScroll,
   CusColor,
+  hideText,
 };

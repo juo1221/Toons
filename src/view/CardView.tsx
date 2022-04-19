@@ -52,16 +52,18 @@ const ImageBox = styled.div`
     height: 100%;
   }
 `;
-const Title = styled.div`
+const Title = styled.span`
   position: absolute;
   width: 100%;
   top: 15.7rem;
-  height: 2.5rem;
-  font-size: 1.6rem;
-  transform: translateY(-100%);
-  ${({ theme }) => theme.CusFlex()};
+  height: 2.4rem;
   background-color: ${({ theme }) => theme.CusColor.modalBack};
+  transform: translateY(-100%);
+  font-size: 1.4rem;
   color: ${({ theme }) => theme.CusColor.white};
+  text-align: center;
+  padding: 0.6rem 2rem;
+  ${({ theme }) => theme.hideText()}
 `;
 const Sub = styled.div<TSub>`
   height: 2.5rem;

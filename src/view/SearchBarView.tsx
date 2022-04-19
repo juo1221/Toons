@@ -165,11 +165,9 @@ const SearchList = styled.li`
 const Title = styled.span`
   border-radius: 10px;
   padding: 1rem;
-  max-width: 35rem;
+  max-width: 32rem;
   float: left;
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
+  ${({ theme }) => theme.hideText()}
 `;
 const Service = styled.span`
   background-color: ${({ theme }) => theme.CusColor.yellow};
@@ -180,9 +178,7 @@ const Service = styled.span`
   padding: 1rem;
   margin-right: 1rem;
   float: right;
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
+  ${({ theme }) => theme.hideText()}
 `;
 const Author = styled(Service)`
   background-color: ${({ theme }) => theme.CusColor.gray};
