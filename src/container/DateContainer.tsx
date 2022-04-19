@@ -6,12 +6,10 @@ const DateContainer = observer(() => {
   const { dateStore, cardListStore, platFormStore } = useStores();
 
   const onSetDayNumber = (value: number) => {
-    dateStore.dayNumber = value;
+    dateStore.setDayNumber(value);
   };
-  const onloadList = (day: number) => {
-    cardListStore.load(platFormStore.platForm, day);
-  };
-  return <DateView day={dateStore.day} onSetDayNumber={onSetDayNumber} onloadList={onloadList} />;
+
+  return <DateView day={dateStore.day} onSetDayNumber={onSetDayNumber} />;
 });
 
 export default DateContainer;

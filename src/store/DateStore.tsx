@@ -17,12 +17,12 @@ class DateStore {
     return this._rootStore;
   }
   get day(): string {
-    return ['월', '화', '수', '목', '금', '토', '일'][this._dayNumber];
+    return ['월', '화', '수', '목', '금', '토', '일', '완결'][this._dayNumber];
   }
-  get dayNum(): NumObj {
+  get DayNumber(): NumObj {
     return { result: this._dayNumber };
   }
-  set dayNumber(value: number) {
+  setDayNumber(value: number) {
     this._dayNumber = value;
   }
 }

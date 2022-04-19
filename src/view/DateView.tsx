@@ -1,27 +1,21 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import styled, { css } from 'styled-components';
 import { observer } from 'mobx-react-lite';
 
 type TDateView = {
   day: string;
   onSetDayNumber: (value: number) => void;
-  onloadList: (day: number) => void;
 };
 
-const DateView: React.FC<TDateView> = observer(({ day, onSetDayNumber, onloadList }) => {
+const DateView: React.FC<TDateView> = observer(({ day, onSetDayNumber }) => {
   const dates = ['월', '화', '수', '목', '금', '토', '일', '완결'];
-  const [clickedText, setClickedText] = useState(day);
   const setOnClick = (text: string) => {
-    setClickedText(text);
-  };
-  useEffect(() => {
-    const n = dates.indexOf(clickedText);
+    const n = dates.indexOf(text);
     onSetDayNumber(n);
-    onloadList(n);
-  }, [clickedText]);
+  };
   const dateList = (): JSX.Element[] => {
     return dates.map((date, idx) => (
-      <Text key={idx} clickedText={clickedText === date} onClick={() => setOnClick(date)}>
+      <Text key={idx} clickedText={day === date} onClick={() => setOnClick(date)}>
         <span>{date}</span>
       </Text>
     ));
