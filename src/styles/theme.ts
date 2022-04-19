@@ -7,6 +7,16 @@ const CusFlex = ($justify = 'center', $align = 'center', $direc = 'row') => css`
   flex-direction: ${$direc};
 `;
 
+const hideScroll = () =>
+  css`
+    overflow: auto;
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+    &::-webkit-scrollbar {
+      display: none; /* Chrome, Safari, Opera*/
+    }
+  `;
+
 const CusColor = {
   yellow: '#FEBF0C',
   red: '#FF0000',
@@ -19,5 +29,6 @@ const CusColor = {
 
 export const theme = {
   CusFlex,
+  hideScroll,
   CusColor,
 };
