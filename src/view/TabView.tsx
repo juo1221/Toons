@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import { ReactComponent as NaverLogo } from '../assets/logo-naver.svg';
 import { ReactComponent as KakaoLogo } from '../assets/logo-kakao.svg';
@@ -12,7 +12,6 @@ type TTabView = {
 };
 
 const TabView: React.FC<TTabView> = observer(({ onSetPlatForm, platform }) => {
-  const [clickedText, setClickedText] = useState(platform);
   const arr = [
     { logo: <NaverLogo />, name: '네이버 웹툰' },
     { logo: <KakaoLogo className="k-logo" />, name: '카카오 웹툰' },
@@ -35,7 +34,7 @@ const TabView: React.FC<TTabView> = observer(({ onSetPlatForm, platform }) => {
         break;
       default:
     }
-    setClickedText(text);
+    onSetPlatForm(text);
   };
   const chageToOriginal = (text: string) => {
     switch (text) {
@@ -58,16 +57,12 @@ const TabView: React.FC<TTabView> = observer(({ onSetPlatForm, platform }) => {
 
   const tabList = (): JSX.Element[] => {
     return arr.map((obj, idx) => (
-      <Tab key={idx} tabState={obj.name === chageToOriginal(clickedText)} onClick={() => setOnclickTab(obj.name)}>
+      <Tab key={idx} tabState={obj.name === chageToOriginal(platform)} onClick={() => setOnclickTab(obj.name)}>
         {obj.logo}
         <span>{obj.name}</span>
       </Tab>
     ));
   };
-
-  useEffect(() => {
-    onSetPlatForm(clickedText);
-  }, [clickedText]);
 
   return (
     <Aside>

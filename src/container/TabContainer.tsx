@@ -5,9 +5,9 @@ import { observer } from 'mobx-react-lite';
 const TabContainer = observer(() => {
   const { dateStore, cardListStore, platFormStore } = useStores();
   const onSetPlatForm = (newPlatForm: string) => {
-    platFormStore.platForm = newPlatForm;
+    platFormStore.setPlatForm(newPlatForm);
   };
-  return <TabView onSetPlatForm={onSetPlatForm} platform={platFormStore.platForm} />;
+  return <TabView onSetPlatForm={onSetPlatForm} platform={platFormStore.platForm.res} />;
 });
 
 export default TabContainer;
