@@ -12,10 +12,10 @@ class PlatFormStore {
   get rootStore() {
     return this._rootStore;
   }
-  get platForm(): string {
-    return this._platForm;
+  get platForm() {
+    return { res: this._platForm };
   }
-  set platForm(value: string) {
+  setPlatForm(value: string) {
     this._platForm = value;
   }
 }

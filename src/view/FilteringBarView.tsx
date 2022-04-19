@@ -5,14 +5,15 @@ import { AiOutlineSearch } from 'react-icons/ai';
 
 type TFilteringBarView = {
   onFilter: (text: string) => void;
+  filteredText: string;
 };
 
-const FilteringBarView: React.FC<TFilteringBarView> = observer(({ onFilter }) => {
+const FilteringBarView: React.FC<TFilteringBarView> = observer(({ onFilter, filteredText }) => {
   return (
     <div>
       <Bar>
         <AiOutlineSearch />
-        <Input placeholder="필터링하기" onChange={(e) => onFilter(e.target.value)} />
+        <Input value={filteredText} placeholder="필터링하기" onChange={(e) => onFilter(e.target.value)} />
       </Bar>
     </div>
   );

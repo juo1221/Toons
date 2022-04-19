@@ -5,7 +5,7 @@ import { observer } from 'mobx-react-lite';
 const SortContainer = observer(() => {
   const { dateStore, cardListStore, platFormStore } = useStores();
   const onSort = (criteria: string) => {
-    cardListStore.sort(platFormStore.platForm, dateStore.dayNum.result, criteria);
+    cardListStore.sort(platFormStore.platForm.res, dateStore.DayNumber.result, criteria);
   };
   return <SortView onSort={onSort} />;
 });

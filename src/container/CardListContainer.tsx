@@ -7,23 +7,23 @@ import CardStore from 'store/CardStore';
 
 const CardListContainer = observer(() => {
   const { cardListStore, dateStore, platFormStore, myListStore } = useStores();
-  const dayNumber = dateStore.dayNum.result;
+  const dayNumber = dateStore.DayNumber.result;
   const onToggleMyList = (card: CardStore) => {
     myListStore.toggle(card);
   };
 
   useEffect(() => {
-    if (platFormStore.platForm === 'myList') {
+    if (platFormStore.platForm.res === 'myList') {
       myListStore.update();
     } else {
-      cardListStore.load(platFormStore.platForm, dayNumber);
+      cardListStore.load(platFormStore.platForm.res, dayNumber);
     }
-  }, [platFormStore.platForm]);
+  }, [platFormStore.platForm, dateStore.DayNumber.result]);
   return (
     <CardListView
-      cardList={(platFormStore.platForm === 'myList' ? myListStore : cardListStore).response}
+      cardList={(platFormStore.platForm.res === 'myList' ? myListStore : cardListStore).response}
       onToggleMyList={onToggleMyList}
-      filtedText={cardListStore.filteredText.text}
+      filtedText={cardListStore.filteredText.res}
     />
   );
 });

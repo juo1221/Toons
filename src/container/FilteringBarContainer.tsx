@@ -9,7 +9,7 @@ const FilteringBarContainer = observer(() => {
   const onFilter = (text: string) => {
     cardListStore.setFilteredText(text);
   };
-  return <FilteringBarView onFilter={onFilter} />;
+  return <FilteringBarView onFilter={onFilter} filteredText={cardListStore.filteredText.res} />;
 });
 
 export default FilteringBarContainer;
