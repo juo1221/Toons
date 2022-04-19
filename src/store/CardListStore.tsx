@@ -7,6 +7,11 @@ import { TData } from '../api/WebToonData';
 import { toJS } from 'mobx';
 
 type DataId = string;
+type SearchError = {
+  error: string;
+  message: string;
+  statusCode: number;
+};
 class CardListStore {
   private _rootStore: IRootStore;
   private _webToonData = WebToonData;
@@ -14,7 +19,7 @@ class CardListStore {
   private _idMap = new Map<DataId, CardStore>();
   private _response: Set<CardStore> | CardStore[] = new Set<CardStore>();
   private _filteredText: string = '';
-  private _sortCmd: () => void = () => {};
+
   constructor(root: IRootStore) {
     console.log('Created: CardListStore!');
     this._rootStore = root;
@@ -42,11 +47,6 @@ class CardListStore {
       }
     }
   }
-
-  /* 변경 필요 */
-  search(name: string) {
-    return this._webToonData.getList(`search?keyword=${name}`);
-  }
   sort(platform: string, day: number, criteria: string) {
     try {
       if (!this._listMap.has(`${platform}${day}`)) err(criteria);
@@ -61,19 +61,31 @@ class CardListStore {
       this.rootStore.myListStore.sort(criteria);
     }
   }
+  async search(name: string) {
+    const res: TData[] | SearchError = await this._webToonData.getList(`search?keyword=${name}`);
+    if (!Array.isArray(res)) {
+      const ErrorRes: SearchError = res;
+      return ErrorRes.message;
+    } else {
+      return res;
+    }
+  }
+  setSearchData(searchData: TData) {
+    this._rootStore.platFormStore.setPlatForm(searchData.service);
+    this._rootStore.dateStore.setDayNumber(searchData.week[0]);
+    this.setFilteredText(searchData.title);
+  }
   setFilteredText(text: string) {
     this._filteredText = text;
   }
-
   get rootStore() {
     return this._rootStore;
   }
   get response() {
-    console.log(1);
     return Array.from(this._response);
   }
   get filteredText() {
-    return { text: this._filteredText };
+    return { res: this._filteredText };
   }
 }
 
