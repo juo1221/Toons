@@ -15,9 +15,6 @@ class CardStore {
   toggle() {
     this._isLiked = !this._isLiked;
   }
-  search(name: string) {
-    return this._webToonData.getList(`search?keyword=${name}`);
-  }
   get isLidkedStore(): CardStore | null {
     return this._isLiked ? this : null;
   }
