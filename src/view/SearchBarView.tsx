@@ -1,6 +1,7 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useRef } from 'react';
 import styled, { css } from 'styled-components';
 import { AiOutlineSearch } from 'react-icons/ai';
+import { AiOutlineCloseCircle } from 'react-icons/ai';
 import { observer } from 'mobx-react-lite';
 import { debounce } from 'lodash';
 import { TData } from '../api/WebToonData';
@@ -16,11 +17,16 @@ const SearchBarView: React.FC<SearchBarView> = observer(({ onSearch, onSetSearch
   const [searchText, setSearchText] = useState<string>('');
   const [isFocused, setIsFocused] = useState(false);
   const [searchList, setSearchList] = useState<string | TData[]>('');
+  const inputRef = useRef<HTMLInputElement>(null);
   const onFocus = () => setIsFocused(true);
   const onBlur = () => setIsFocused(false);
 
   const setOnClick = (info: TData) => {
     onSetSearchData(info);
+    setOnClose();
+    if (inputRef.current) {
+      inputRef.current.focus();
+    }
   };
   const delaySetValue = useCallback(
     debounce((value) => {
@@ -34,13 +40,17 @@ const SearchBarView: React.FC<SearchBarView> = observer(({ onSearch, onSetSearch
   };
 
   const searchData = debounce(async (text: string) => {
-    console.log(text);
     if (!text.trim()) {
       setSearchList('');
     } else {
       setSearchList(await onSearch(text));
     }
   }, 1000);
+
+  const setOnClose = () => {
+    setValue('');
+    setSearchText('');
+  };
 
   useEffect(() => {
     searchData(searchText);
@@ -63,7 +73,15 @@ const SearchBarView: React.FC<SearchBarView> = observer(({ onSearch, onSetSearch
   return (
     <Bar searchList={!!searchList} isFocused={isFocused}>
       <AiOutlineSearch />
-      <Input value={value} placeholder="작가,작품명 검색하기" onChange={(e) => handleInputChange(e.target.value)} onFocus={onFocus} onBlur={onBlur} />
+      <Input
+        ref={inputRef}
+        value={value}
+        placeholder="작가,작품명 검색하기"
+        onChange={(e) => handleInputChange(e.target.value)}
+        onFocus={onFocus}
+        onBlur={onBlur}
+      />
+      <AiOutlineCloseCircle onClick={setOnClose} className="closeBtn" />
       {searchList ? <ListView isFocused={isFocused}>{searchListC()}</ListView> : null}
     </Bar>
   );
@@ -85,9 +103,13 @@ const Bar = styled.div<TBar>`
   padding: 1.3rem;
   background-color: ${({ theme }) => theme.CusColor.white};
   font-size: 2rem;
-  ${({ theme }) => theme.CusFlex('none', 'none')} svg {
+  ${({ theme }) => theme.CusFlex('none', 'none')};
+  svg {
     width: 2.5rem;
     height: 2.5rem;
+  }
+  .closeBtn {
+    cursor: pointer;
   }
 `;
 const Input = styled.input`
@@ -100,6 +122,17 @@ const Input = styled.input`
 `;
 const ListView = styled.ul<TListView>`
   transition: all 0.5s ease-in-out;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 30rem;
+  z-index: 10;
+  padding: 1.3rem;
+  overflow: auto;
+  border-radius: 0 0 2rem 2rem;
+  background-color: ${({ theme }) => theme.CusColor.white};
+  ${({ theme }) => theme.hideScroll()};
   ${({ isFocused }) => {
     if (isFocused) {
       return css`
@@ -112,17 +145,6 @@ const ListView = styled.ul<TListView>`
       `;
     }
   }};
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  height: 30rem;
-  z-index: 10;
-  padding: 1.3rem;
-  overflow: auto;
-  border-radius: 0 0 2rem 2rem;
-  background-color: ${({ theme }) => theme.CusColor.white};
-  ${({ theme }) => theme.hideScroll()};
 `;
 const SearchList = styled.li`
   text-align: center;
