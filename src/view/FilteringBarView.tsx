@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { observer } from 'mobx-react-lite';
+import { AiOutlineCloseCircle } from 'react-icons/ai';
 import { AiOutlineSearch } from 'react-icons/ai';
 
 type TFilteringBarView = {
@@ -9,11 +10,15 @@ type TFilteringBarView = {
 };
 
 const FilteringBarView: React.FC<TFilteringBarView> = observer(({ onFilter, filteredText }) => {
+  const setOnClick = () => {
+    onFilter('');
+  };
   return (
     <div>
       <Bar>
         <AiOutlineSearch />
         <Input value={filteredText} placeholder="필터링하기" onChange={(e) => onFilter(e.target.value)} />
+        <AiOutlineCloseCircle onClick={setOnClick} className="closeBtn" />
       </Bar>
     </div>
   );
@@ -23,12 +28,15 @@ const Bar = styled.div`
   width: 20.019rem;
   height: 4rem;
   border-radius: 2rem;
-  padding: 1.902rem 1rem;
-  ${({ theme }) => theme.CusFlex('none')}
+  ${({ theme }) => theme.CusFlex()};
+  padding: 0.5rem;
   background-color: ${({ theme }) => theme.CusColor.white};
   svg {
     width: 2rem;
     height: 2rem;
+  }
+  .closeBtn {
+    cursor: pointer;
   }
 `;
 const Input = styled.input`
