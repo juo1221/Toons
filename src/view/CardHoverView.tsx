@@ -24,14 +24,11 @@ const CardHoverView: React.FC<CardHoverView> = ({ info, onToggleList, onToggleMy
   };
 
   useEffect(() => {
-    if (targetRef && targetRef.current) {
-      targetRef.current.style.cssText = 'opacity:0.5; transform: scale(0.9) translate(-4.5rem, -8.25rem);';
-      setTimeout(() => {
-        if (targetRef && targetRef.current) {
-          targetRef.current.style.cssText = 'opacity:1; transform: scale(1.1) translate(-4.5rem, -8.25rem)';
-        }
-      }, 0);
-    }
+    setTimeout(() => {
+      if (targetRef && targetRef.current) {
+        targetRef.current.style.cssText = 'transform: scale(1.1);  opacity:1;';
+      }
+    }, 0);
   }, []);
 
   return (
@@ -56,7 +53,7 @@ const CardHoverView: React.FC<CardHoverView> = ({ info, onToggleList, onToggleMy
             <StateBtnNew additional={info.additional}>New</StateBtnNew>
             <StateBtnRest additional={info.additional}>Rest</StateBtnRest>
           </StateBtns>
-          <ViewBtn>
+          <ViewBtn href={info.url}>
             <BiRun />
           </ViewBtn>
         </Buttons>
@@ -71,11 +68,15 @@ type TSub = {
 type TState = Pick<TData, 'additional'>;
 
 const Container = styled.div`
+  position: absolute;
   width: 25rem;
   height: 35rem;
-  position: absolute;
+  left: -4.5rem;
+  top: -8.25rem;
   z-index: 10;
   transition: all 0.5s ease-in-out;
+  transform: scale(0.9);
+  opacity: 0.5;
   ${({ theme }) => theme.hideScroll()};
   box-shadow: 0px 0px 20px -2px rgba(0, 0, 0, 0.5);
   -webkit-box-shadow: 0px 0px 20px -2px rgba(0, 0, 0, 0.5);
@@ -187,7 +188,7 @@ const StateBtnRest = styled(StateBtn)<TState>`
     `}
 `;
 
-const ViewBtn = styled.button`
+const ViewBtn = styled.a`
   width: 7rem;
   height: 3rem;
   border: 3px solid #febf0c;

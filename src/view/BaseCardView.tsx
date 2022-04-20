@@ -38,7 +38,7 @@ const BaseCardView: React.FC<TCard> = observer(({ info, onToggleList, onToggleMy
   };
   return (
     <Card ref={cardRef} onMouseEnter={setOnHover} onMouseLeave={setOnLeave}>
-      <ImageBox>
+      <ImageBox href={info.url}>
         <img src={info.img} alt="이미지" />
       </ImageBox>
       <Title>{info.title}</Title>
@@ -63,7 +63,7 @@ const Card = styled.div`
   -moz-box-shadow: 0px 0px 15px -2px rgba(0, 0, 0, 0.75);
 `;
 
-const ImageBox = styled.div`
+const ImageBox = styled.a`
   height: 16rem;
   cursor: pointer;
   overflow: hidden;
