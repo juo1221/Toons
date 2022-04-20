@@ -24,4 +24,11 @@ export const GlobalStyle = createGlobalStyle`
   li {
     list-style: none;
   }
+  @font-face {
+    font-family:BMYEONSUNG;
+    src: local('BMYEONSUNG');
+  }
+  #aside, #search-bar, #date-bar, #filter-bar, #sort-bar,#card-list {
+    font-family: 'BMYEONSUNG', sans-serif;
+  }
 `;

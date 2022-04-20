@@ -20,7 +20,7 @@ const DateView: React.FC<TDateView> = observer(({ day, onSetDayNumber }) => {
       </Text>
     ));
   };
-  return <Container>{dateList()}</Container>;
+  return <Container id="date-bar">{dateList()}</Container>;
 });
 
 type TText = {
@@ -31,8 +31,8 @@ const Container = styled.div`
   width: 83.478rem;
   height: 5rem;
   margin: 0 auto;
-  ${({ theme }) => theme.CusFlex('space-between')}
   color: ${({ theme }) => theme.CusColor.white};
+  ${({ theme }) => theme.CusFlex('space-between')}
 `;
 const Text = styled.div<TText>`
   font-weight: 500;
@@ -42,7 +42,7 @@ const Text = styled.div<TText>`
   border-radius: 50%;
   cursor: pointer;
   transition: all 0.2s ease-in-out;
-  ${({ theme }) => theme.CusFlex('center', 'center')};
   background-color: ${({ clickedText, theme }) => clickedText && theme.CusColor.yellow};
+  ${({ theme }) => theme.CusFlex('center', 'center')};
 `;
 export default DateView;

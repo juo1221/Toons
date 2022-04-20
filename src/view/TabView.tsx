@@ -65,7 +65,7 @@ const TabView: React.FC<TTabView> = observer(({ onSetPlatForm, platform }) => {
   };
 
   return (
-    <Aside>
+    <Aside id="aside">
       <Title>Toons</Title>
       <Content>{'네이버, 카카오, 카카오페이지 \n 웹툰을 검색해보세요'}</Content>
       {tabList()}
@@ -81,6 +81,7 @@ const Aside = styled.div`
   width: 36.4rem;
   height: 100vh;
   background-color: ${({ theme }) => theme.CusColor.black};
+
   svg {
     border-radius: 50%;
     background-color: white;

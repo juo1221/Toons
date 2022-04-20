@@ -20,7 +20,7 @@ const SortView: React.FC<TSortView> = observer(({ onSort }) => {
       </Button>
     ));
   };
-  return <Container>{buttonList()}</Container>;
+  return <Container id="sort-bar">{buttonList()}</Container>;
 });
 
 type IButton = {

@@ -20,7 +20,7 @@ type Like = {
 const CardView: React.FC<TCard> = observer(({ info, onToggleList, onToggleMyList, cardStore }) => {
   const [isHover, setIsHover] = useState(false);
   return (
-    <Wrapper>
+    <Wrapper id="card-list">
       {isHover ? (
         <>
           <CardHoverView info={info} onToggleList={onToggleList} onToggleMyList={onToggleMyList} cardStore={cardStore} setIsHover={setIsHover} />

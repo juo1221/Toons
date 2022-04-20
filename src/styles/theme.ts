@@ -34,8 +34,8 @@ const CusColor = {
 };
 
 export const theme = {
+  CusColor,
   CusFlex,
   hideScroll,
-  CusColor,
   hideText,
 };

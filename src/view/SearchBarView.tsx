@@ -71,7 +71,7 @@ const SearchBarView: React.FC<SearchBarView> = observer(({ onSearch, onSetSearch
   };
 
   return (
-    <Bar searchList={!!searchList} isFocused={isFocused}>
+    <Bar id="search-bar" searchList={!!searchList} isFocused={isFocused}>
       <AiOutlineSearch />
       <Input
         ref={inputRef}

@@ -40,6 +40,7 @@ const Container = styled.div`
   background-color: ${({ theme }) => theme.CusColor.main};
   ${({ theme }) => theme.hideScroll()};
 `;
+
 const Box = styled.div`
   margin-top: 3.7rem;
   ${({ theme }) => theme.CusFlex('space-between')}

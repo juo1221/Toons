@@ -15,7 +15,7 @@ const FilteringBarView: React.FC<TFilteringBarView> = observer(({ onFilter, filt
   };
   return (
     <div>
-      <Bar>
+      <Bar id="filter-bar">
         <AiOutlineSearch />
         <Input value={filteredText} placeholder="필터링하기" onChange={(e) => onFilter(e.target.value)} />
         <AiOutlineCloseCircle onClick={setOnClick} className="closeBtn" />
