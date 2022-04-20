@@ -124,7 +124,6 @@ const Author = styled.p`
 const Sub = styled.div<TSub>`
   height: 2.5rem;
   background-color: ${({ theme }) => theme.CusColor.black};
-  padding: 0.5rem 1rem;
   text-align: right;
   svg {
     width: 1.5rem;
