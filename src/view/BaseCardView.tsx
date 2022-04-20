@@ -5,7 +5,7 @@ import { TData } from '../api/WebToonData';
 import { observer } from 'mobx-react-lite';
 import CardStore from 'store/CardStore';
 
-type TCard = {
+export type TCard = {
   info: TData & Like;
   onToggleList: () => void;
   cardStore: CardStore;

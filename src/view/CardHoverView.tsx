@@ -3,20 +3,26 @@ import styled, { css } from 'styled-components';
 import { FaHeart } from 'react-icons/fa';
 import { BiRun } from 'react-icons/bi';
 import { TData } from '../api/WebToonData';
+import { TCard } from './BaseCardView';
 
-type CardHoverView = {
-  info: TData & Like;
-  setIsHover: React.Dispatch<React.SetStateAction<boolean>>;
-};
+type CardHoverView = TCard;
+
 type Like = {
   isLiked: boolean;
 };
 
-const CardHoverView: React.FC<CardHoverView> = ({ info, setIsHover }) => {
+const CardHoverView: React.FC<CardHoverView> = ({ info, onToggleList, onToggleMyList, cardStore, setIsHover }) => {
   const targetRef = useRef<HTMLDivElement>(null);
+
   const setOnLeave = () => {
     setIsHover(false);
   };
+
+  const setOnClick = () => {
+    onToggleList();
+    onToggleMyList(cardStore);
+  };
+
   useEffect(() => {
     if (targetRef && targetRef.current) {
       targetRef.current.style.cssText = 'opacity:0.5; transform: scale(0.9) translate(-4.5rem, -8.25rem);';
@@ -40,7 +46,7 @@ const CardHoverView: React.FC<CardHoverView> = ({ info, setIsHover }) => {
             <Author>작가 : {info.author}</Author>
           </Info>
           <Sub isLiked={info.isLiked}>
-            <FaHeart />
+            <FaHeart onClick={setOnClick} />
           </Sub>
         </Infos>
         <Buttons>
@@ -108,12 +114,10 @@ const Info = styled.div`
 `;
 const Title = styled.p`
   width: 20rem;
-  color: ${({ theme }) => theme.CusColor.red};
   ${({ theme }) => theme.hideText()};
 `;
 const Author = styled.p`
   width: 20rem;
-  color: ${({ theme }) => theme.CusColor.red};
   ${({ theme }) => theme.hideText()}
 `;
 const Sub = styled.div<TSub>`

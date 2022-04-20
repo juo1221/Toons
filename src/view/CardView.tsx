@@ -23,7 +23,7 @@ const CardView: React.FC<TCard> = observer(({ info, onToggleList, onToggleMyList
     <Wrapper>
       {isHover ? (
         <>
-          <CardHoverView info={info} setIsHover={setIsHover} />
+          <CardHoverView info={info} onToggleList={onToggleList} onToggleMyList={onToggleMyList} cardStore={cardStore} setIsHover={setIsHover} />
         </>
       ) : (
         <>
