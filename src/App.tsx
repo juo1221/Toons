@@ -5,7 +5,7 @@ import FilteringBarContainer from './container/FilteringBarContainer';
 import DateContainer from './container/DateContainer';
 import SortContainer from './container/SortContainer';
 import CardListContainer from './container/CardListContainer';
-import CardHoverContainer from './container/CardHoverContainer';
+
 import styled from 'styled-components';
 
 const App = () => {
@@ -25,19 +25,17 @@ const App = () => {
         </Box>
         <CardListContainer />
       </Container>
-      {/* <CardHoverContainer /> */}
     </Wrapper>
   );
 };
 
 const Wrapper = styled.div`
-  width: 100vw;
+  width: 100%;
   height: 100vh;
-  ${({ theme }) => theme.CusFlex()}
+  ${({ theme }) => theme.CusFlex('none', 'none')}
 `;
 const Container = styled.div`
-  width: 107.7rem;
-  height: 96rem;
+  width: 100%;
   padding: 0 9.509rem;
   background-color: ${({ theme }) => theme.CusColor.main};
   ${({ theme }) => theme.hideScroll()};

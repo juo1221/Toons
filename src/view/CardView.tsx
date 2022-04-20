@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useRef, useState } from 'react';
 import styled from 'styled-components';
-import { FaHeart } from 'react-icons/fa';
 import { TData } from '../api/WebToonData';
 import { observer } from 'mobx-react-lite';
 import CardStore from 'store/CardStore';
+import BaseCardView from './BaseCardView';
+import CardHoverView from './CardHoverView';
 
 type TCard = {
   info: TData & Like;
@@ -11,71 +12,30 @@ type TCard = {
   cardStore: CardStore;
   onToggleMyList: (card: CardStore) => void;
 };
+
 type Like = {
   isLiked: boolean;
 };
 
 const CardView: React.FC<TCard> = observer(({ info, onToggleList, onToggleMyList, cardStore }) => {
-  const setOnClick = () => {
-    onToggleList();
-    onToggleMyList(cardStore);
-  };
-
+  const [isHover, setIsHover] = useState(false);
   return (
-    <Card>
-      <ImageBox>
-        <img src={info.img} alt="이미지" />
-      </ImageBox>
-      <Title>{info.title}</Title>
-      <Sub isLiked={info.isLiked}>
-        <FaHeart onClick={setOnClick} />
-      </Sub>
-    </Card>
+    <Wrapper>
+      {isHover ? (
+        <>
+          <CardHoverView info={info} setIsHover={setIsHover} />
+        </>
+      ) : (
+        <>
+          <BaseCardView info={info} onToggleList={onToggleList} onToggleMyList={onToggleMyList} cardStore={cardStore} setIsHover={setIsHover} />
+        </>
+      )}
+    </Wrapper>
   );
 });
 
-type TSub = {
-  isLiked: boolean;
-};
-
-const Card = styled.div`
+const Wrapper = styled.div`
   position: relative;
-  width: 16.015rem;
-  ${({ theme }) => theme.CusFlex('none', 'none', 'column')}
-`;
-const ImageBox = styled.div`
-  height: 15.7rem;
-  cursor: pointer;
-  border-radius: 5px 5px 0px 0px;
-  img {
-    width: 100%;
-    height: 100%;
-  }
-`;
-const Title = styled.span`
-  position: absolute;
-  width: 100%;
-  top: 15.7rem;
-  height: 2.4rem;
-  background-color: ${({ theme }) => theme.CusColor.modalBack};
-  transform: translateY(-100%);
-  font-size: 1.4rem;
-  color: ${({ theme }) => theme.CusColor.white};
-  text-align: center;
-  padding: 0.6rem 2rem;
-  ${({ theme }) => theme.hideText()}
-`;
-const Sub = styled.div<TSub>`
-  height: 2.5rem;
-  background-color: ${({ theme }) => theme.CusColor.black};
-  padding: 0.5rem 1rem;
-  text-align: right;
-  svg {
-    width: 1.5rem;
-    height: 1.5rem;
-    cursor: pointer;
-    color: ${({ isLiked, theme }) => (isLiked ? theme.CusColor.red : theme.CusColor.white)};
-  }
 `;
 
 export default CardView;

@@ -24,9 +24,11 @@ const CardListView: React.FC<TCardListView> = observer(({ cardList, onToggleMyLi
 
 const Container = styled.div`
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 8rem;
-  width: 88.706rem;
+  width: 100%;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 0.5rem;
+  justify-content: space-around;
+  padding: 10rem 0;
 `;
 
 export default CardListView;
