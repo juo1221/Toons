@@ -42,7 +42,6 @@ const Container = styled.div`
 `;
 const Box = styled.div`
   margin-top: 3.7rem;
-  margin-bottom: 4.8rem;
   ${({ theme }) => theme.CusFlex('space-between')}
 `;
 export default App;

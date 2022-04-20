@@ -36,8 +36,8 @@ const CardHoverView: React.FC<CardHoverView> = ({ info, setIsHover }) => {
       <Content>
         <Infos>
           <Info>
-            <p>제목 : {info.title}</p>
-            <p>작가 : {info.author}</p>
+            <Title>제목 : {info.title}</Title>
+            <Author>작가 : {info.author}</Author>
           </Info>
           <Sub isLiked={info.isLiked}>
             <FaHeart />
@@ -105,6 +105,16 @@ const Info = styled.div`
   height: 3.2rem;
   gap: 0.5rem;
   ${({ theme }) => theme.CusFlex('space-between', 'flex-start', 'column')};
+`;
+const Title = styled.p`
+  width: 20rem;
+  color: ${({ theme }) => theme.CusColor.red};
+  ${({ theme }) => theme.hideText()};
+`;
+const Author = styled.p`
+  width: 20rem;
+  color: ${({ theme }) => theme.CusColor.red};
+  ${({ theme }) => theme.hideText()}
 `;
 const Sub = styled.div<TSub>`
   height: 2.5rem;
