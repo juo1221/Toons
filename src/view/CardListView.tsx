@@ -3,16 +3,42 @@ import styled from 'styled-components';
 import CardView from './CardView';
 import CardStore from 'store/CardStore';
 import Loding from './LodingView';
+import { MdOutlineGrass } from 'react-icons/md';
 import { observer } from 'mobx-react-lite';
 
 type TCardListView = {
   cardList: CardStore[];
   onToggleMyList: (card: CardStore) => void;
   filtedText: string;
+  platForm: string;
 };
 const loadingText = '웹툰서비스가준비중입니다!잠시만기다려주세요~^^'.repeat(5).split('');
+const icon = () => <MdOutlineGrass fill="#82dd82" />;
+const myListText = [
+  icon(),
+  icon(),
+  icon(),
+  '',
+  icon(),
+  icon(),
+  icon(),
+  icon(),
+  '',
+  icon(),
+  '',
+  icon(),
+  '',
+  icon(),
+  icon(),
+  '',
+  icon(),
+  '',
+  icon(),
+  icon(),
+  icon(),
+];
 
-const CardListView: React.FC<TCardListView> = observer(({ cardList, onToggleMyList, filtedText }) => {
+const CardListView: React.FC<TCardListView> = observer(({ cardList, onToggleMyList, filtedText, platForm }) => {
   const cardListF = () => {
     if (cardList.length) {
       const filterdCardList = cardList.filter((card) => card.data.info.title.toLowerCase().indexOf(filtedText.toLowerCase()) !== -1);
@@ -22,7 +48,9 @@ const CardListView: React.FC<TCardListView> = observer(({ cardList, onToggleMyLi
         return <CardView key={info._id} info={{ ...info, isLiked }} onToggleList={card.toggle} onToggleMyList={onToggleMyList} cardStore={card} />;
       });
     } else {
-      return Array.from({ length: 50 }, (_, idx) => <Loding text={loadingText[idx]} />);
+      return platForm === 'myList'
+        ? Array.from({ length: myListText.length }, (_, idx) => <Loding text={myListText[idx]} />)
+        : Array.from({ length: 50 }, (_, idx) => <Loding text={loadingText[idx]} />);
     }
   };
   return <Container>{cardListF()}</Container>;

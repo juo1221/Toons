@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { FaHeart } from 'react-icons/fa';
 
 type TLodingView = {
-  text: string;
+  text: string | JSX.Element;
 };
 const LodingView: React.FC<TLodingView> = ({ text }) => {
   return (
@@ -34,7 +34,7 @@ const ImageBox = styled.div`
   font-size: 5rem;
   background-color: rgba(255, 255, 255, 0.1);
   font-weight: bold;
-  color: ${({ theme }) => theme.CusColor.white};
+  color: #82dd82;
   ${({ theme }) => theme.CusFlex()};
   @keyframes skeleton-gradient {
     0% {

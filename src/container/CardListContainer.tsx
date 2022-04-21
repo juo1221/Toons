@@ -22,6 +22,7 @@ const CardListContainer = observer(() => {
   return (
     <CardListView
       cardList={(platFormStore.platForm.res === 'myList' ? myListStore : cardListStore).response}
+      platForm={platFormStore.platForm.res}
       onToggleMyList={onToggleMyList}
       filtedText={cardListStore.filteredText.res}
     />
