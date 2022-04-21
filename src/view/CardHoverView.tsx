@@ -7,10 +7,6 @@ import { TCard } from './BaseCardView';
 
 type CardHoverView = TCard;
 
-type Like = {
-  isLiked: boolean;
-};
-
 const CardHoverView: React.FC<CardHoverView> = ({ info, onToggleList, onToggleMyList, cardStore, setIsHover }) => {
   const targetRef = useRef<HTMLDivElement>(null);
 

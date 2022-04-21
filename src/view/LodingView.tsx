@@ -1,13 +1,15 @@
-import React, { useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import styled from 'styled-components';
 import { FaHeart } from 'react-icons/fa';
 
 type TLodingView = {
-  text: string | JSX.Element;
+  text?: string;
+  backgroundColor?: string;
+  delay: number;
 };
-const LodingView: React.FC<TLodingView> = ({ text }) => {
+const LodingView: React.FC<TLodingView> = ({ backgroundColor = '#000000', text, delay }) => {
   return (
-    <Card>
+    <Card backgroundColor={backgroundColor} delay={delay}>
       <ImageBox className="loding-image">{text}</ImageBox>
       <Title>...</Title>
       <Sub>
@@ -17,14 +19,38 @@ const LodingView: React.FC<TLodingView> = ({ text }) => {
   );
 };
 
-const Card = styled.div`
+type TCard = {
+  delay: number;
+  backgroundColor: string;
+};
+
+const Card = styled.div<TCard>`
+  position: relative;
   width: 16rem;
   height: 18.5rem;
-  position: relative;
-  ${({ theme }) => theme.CusFlex('none', 'none', 'column')}
   box-shadow: 0px 0px 15px -2px rgba(0, 0, 0, 0.75);
   -webkit-box-shadow: 0px 0px 15px -2px rgba(0, 0, 0, 0.75);
   -moz-box-shadow: 0px 0px 15px -2px rgba(0, 0, 0, 0.75);
+  background-color: ${({ backgroundColor }) => backgroundColor};
+  animation: ${({ delay }) => `6s ease ${delay}s infinite flow`};
+  ${({ theme }) => theme.CusFlex('none', 'none', 'column')};
+  @keyframes flow {
+    0% {
+      transform: translateY(-10%) scale(1);
+    }
+    20% {
+      transform: translateX(-10%);
+    }
+    40% {
+      transform: translateY(10%) scale(1.1);
+    }
+    60% {
+      transform: translateX(10%);
+    }
+    100% {
+      transform: translateY(-10%) scale(1);
+    }
+  }
 `;
 
 const ImageBox = styled.div`
@@ -32,13 +58,12 @@ const ImageBox = styled.div`
   overflow: hidden;
   border-radius: 5px 5px 0px 0px;
   font-size: 5rem;
-  background-color: rgba(255, 255, 255, 0.1);
   font-weight: bold;
   color: #51f9b8;
   ${({ theme }) => theme.CusFlex()};
   @keyframes skeleton-gradient {
     0% {
-      background-color: rgba(165, 165, 165, 0.1);
+      background-color: rgba(65, 46, 46, 0.1);
     }
     50% {
       background-color: rgb(165, 165, 165, 0.2);
