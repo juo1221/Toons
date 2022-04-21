@@ -12,7 +12,7 @@ type TCardListView = {
   filtedText: string;
   platForm: string;
 };
-const loadingText = '웹툰서비스가준비중입니다!잠시만기다려주세요~^^'.repeat(5).split('');
+const loadingText = '좋아하는    웹툰이    무엇인가요?       좋아하는    장르는    무엇인가요?'.repeat(1).split('');
 const icon = () => <MdOutlineGrass fill="#82dd82" />;
 const myListText = [
   icon(),
@@ -49,8 +49,8 @@ const CardListView: React.FC<TCardListView> = observer(({ cardList, onToggleMyLi
       });
     } else {
       return platForm === 'myList'
-        ? Array.from({ length: myListText.length }, (_, idx) => <Loding text={myListText[idx]} />)
-        : Array.from({ length: 50 }, (_, idx) => <Loding text={loadingText[idx]} />);
+        ? Array.from({ length: myListText.length }, (_, idx) => <Loding key={idx} text={myListText[idx]} />)
+        : Array.from({ length: 56 }, (_, idx) => <Loding key={idx} text={loadingText[idx]} />);
     }
   };
   return <Container>{cardListF()}</Container>;

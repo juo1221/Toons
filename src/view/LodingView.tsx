@@ -34,7 +34,7 @@ const ImageBox = styled.div`
   font-size: 5rem;
   background-color: rgba(255, 255, 255, 0.1);
   font-weight: bold;
-  color: #82dd82;
+  color: #51f9b8;
   ${({ theme }) => theme.CusFlex()};
   @keyframes skeleton-gradient {
     0% {

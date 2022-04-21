@@ -26,6 +26,7 @@ class CardListStore {
     makeAutoObservable(this, undefined, { autoBind: true });
   }
   async load(platform: string = 'naver', day: number) {
+    this._response = [];
     if (this._listMap.has(`${platform}${day}`)) {
       this._response = this._listMap.get(`${platform}${day}`)!;
     } else {
