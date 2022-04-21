@@ -34,4 +34,7 @@ export const GlobalStyle = createGlobalStyle`
   #card-list,.tab {
     font-family: 'BMHANNAAir', sans-serif;
   }
+  .loding-image {
+    font-family: 'BMYEONSUNG', sans-serif;
+  }
 `;
