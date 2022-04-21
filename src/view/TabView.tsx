@@ -57,7 +57,7 @@ const TabView: React.FC<TTabView> = observer(({ onSetPlatForm, platform }) => {
 
   const tabList = (): JSX.Element[] => {
     return arr.map((obj, idx) => (
-      <Tab key={idx} tabState={obj.name === chageToOriginal(platform)} onClick={() => setOnclickTab(obj.name)}>
+      <Tab className='tab' key={idx} tabState={obj.name === chageToOriginal(platform)} onClick={() => setOnclickTab(obj.name)}>
         {obj.logo}
         <span>{obj.name}</span>
       </Tab>
@@ -66,8 +66,8 @@ const TabView: React.FC<TTabView> = observer(({ onSetPlatForm, platform }) => {
 
   return (
     <Aside id="aside">
-      <Title>Toons</Title>
-      <Content>{'네이버, 카카오, 카카오페이지 \n 웹툰을 검색해보세요'}</Content>
+      <Title className="aside-title">Toons</Title>
+      <Content className="aside-content">{'네이버, 카카오, 카카오페이지 \n 웹툰을 검색해보세요'}</Content>
       {tabList()}
     </Aside>
   );

@@ -77,13 +77,13 @@ const Title = styled.span`
   position: absolute;
   width: 100%;
   top: 16rem;
-  height: 2.4rem;
-  background-color: ${({ theme }) => theme.CusColor.modalBack};
+  height: 3rem;
+  background-color: ${({ theme }) => theme.CusColor.titleBack};
   transform: translateY(-100%);
-  font-size: 1.4rem;
+  font-size: 1.7rem;
   color: ${({ theme }) => theme.CusColor.white};
   text-align: center;
-  padding: 0.6rem 2rem;
+  padding: 0.75rem 2rem;
   ${({ theme }) => theme.hideText()}
 `;
 const Sub = styled.div<TSub>`

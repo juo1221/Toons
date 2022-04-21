@@ -31,6 +31,7 @@ const CusColor = {
   white: '#FFFFFF',
   main: '#3E3E3D',
   modalBack: 'rgba(114, 114, 114, 0.54)',
+  titleBack: 'rgba(114, 114, 114, 0.8)',
 };
 
 export const theme = {

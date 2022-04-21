@@ -25,10 +25,13 @@ export const GlobalStyle = createGlobalStyle`
     list-style: none;
   }
   @font-face {
-    font-family:BMYEONSUNG;
-    src: local('BMYEONSUNG');
+    font-family:BMYEONSUNG,BMHANNAAir;
+    src: local('BMYEONSUNG','BMHANNAAir');
   }
-  #aside, #search-bar, #date-bar, #filter-bar, #sort-bar,#card-list {
+  #search-bar, #date-bar, #filter-bar, #sort-bar,.aside-title, .aside-content {
     font-family: 'BMYEONSUNG', sans-serif;
+  }  
+  #card-list,.tab {
+    font-family: 'BMHANNAAir', sans-serif;
   }
 `;
