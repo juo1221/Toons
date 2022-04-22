@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.js": "/static/js/main.fd9ef8c4.js",
+    "static/media/logo-naver.svg": "/static/media/logo-naver.1fe1ef16c9dc19a1a25e87918251ee6d.svg",
+    "static/media/logo-kakao.svg": "/static/media/logo-kakao.da1c64347af0e63c91e9caf26b8dd921.svg",
+    "static/media/logo-kakaoPage.svg": "/static/media/logo-kakaoPage.400cbf6d70b0b5caf2559956c171b7c8.svg",
+    "index.html": "/index.html",
+    "main.fd9ef8c4.js.map": "/static/js/main.fd9ef8c4.js.map"
+  },
+  "entrypoints": [
+    "static/js/main.fd9ef8c4.js"
+  ]
+}
