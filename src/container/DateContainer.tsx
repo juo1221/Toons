@@ -3,7 +3,7 @@ import DateView from '../view/DateView';
 import { observer } from 'mobx-react-lite';
 import { useStores } from 'context/RootContext';
 const DateContainer = observer(() => {
-  const { dateStore, cardListStore, platFormStore } = useStores();
+  const { dateStore } = useStores();
 
   const onSetDayNumber = (value: number) => {
     dateStore.setDayNumber(value);
