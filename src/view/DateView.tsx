@@ -32,11 +32,12 @@ type TText = {
 };
 
 const Container = styled.div`
-  width: 83.478rem;
   height: 5rem;
-  margin: 0 auto;
   color: ${({ theme }) => theme.CusColor.white};
   ${({ theme }) => theme.CusFlex('space-between')}
+  @media screen and (max-width: 1024px) {
+    width: 50rem;
+  }
 `;
 const Text = styled.div<TText>`
   font-weight: 500;

@@ -95,14 +95,16 @@ type TListView = {
 };
 
 const Bar = styled.div<TBar>`
-  transition: all 0.3s ease-in-out;
   position: relative;
-  width: 60rem;
   height: 5rem;
   border-radius: ${({ searchList, isFocused }) => (searchList && isFocused ? '2rem 2rem 0 0' : '2rem 2rem 2rem 2rem')};
   padding: 1.3rem;
   background-color: ${({ theme }) => theme.CusColor.white};
   font-size: 2rem;
+  margin-left: auto;
+  @media screen and (max-width: 1024px) {
+    width: 50rem;
+  }
   ${({ theme }) => theme.CusFlex('none', 'none')};
   svg {
     width: 2.5rem;
@@ -119,6 +121,9 @@ const Input = styled.input`
   border: none;
   outline: none;
   color: ${({ theme }) => theme.CusColor.gray};
+  @media screen and (max-width: 1024px) {
+    width: 50rem;
+  }
 `;
 const ListView = styled.ul<TListView>`
   transition: all 0.5s ease-in-out;

@@ -13,7 +13,7 @@ const App = () => {
     <Wrapper>
       <TabContainer />
       <Container>
-        <div style={{ display: 'flex', justifyContent: 'flex-end', marginTop: '4rem' }}>
+        <div style={{ marginTop: '4rem' }}>
           <SearchBarContainer />
         </div>
         <div style={{ marginTop: '2.8rem' }}>
@@ -43,6 +43,8 @@ const Container = styled.div`
 
 const Box = styled.div`
   margin-top: 3.7rem;
-  ${({ theme }) => theme.CusFlex('space-between')}
+  ${({ theme }) => theme.CusFlex('space-between')}; @media screen and (max-width: 1024px) {
+    width: 50rem;
+  }
 `;
 export default App;

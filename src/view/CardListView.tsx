@@ -63,11 +63,16 @@ const CardListView: React.FC<TCardListView> = observer(({ cardList, onToggleMyLi
 
 const Container = styled.div`
   display: grid;
-  width: 100%;
-  grid-template-columns: repeat(7, 1fr);
+  grid-template-columns: repeat(auto-fill, 200px);
   gap: 0.5rem;
-  justify-content: space-around;
-  padding: 10rem 0;
+  justify-content: center;
+  justify-items: center;
+  padding-top: 10rem;
+  padding-bottom: 20rem;
+  @media screen and (max-width: 1024px) {
+    grid-template-columns: repeat(2, 200px);
+    width: 50rem;
+  }
 `;
 const Loading = styled(Container)`
   color: white;
