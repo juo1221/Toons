@@ -43,7 +43,8 @@ const Container = styled.div`
 
 const Box = styled.div`
   margin-top: 3.7rem;
-  ${({ theme }) => theme.CusFlex('space-between')}; @media screen and (max-width: 1024px) {
+  ${({ theme }) => theme.CusFlex('space-between')};
+  @media screen and (max-width: 1024px) {
     width: 50rem;
   }
 `;

@@ -52,17 +52,13 @@ const BaseCardView: React.FC<TCard> = observer(({ info, onToggleList, onToggleMy
 type TSub = {
   isLiked: boolean;
 };
-
 const Card = styled.div`
-  width: 16rem;
-  height: 18.5rem;
   position: relative;
   ${({ theme }) => theme.CusFlex('none', 'none', 'column')}
   box-shadow: 0px 0px 15px -2px rgba(0, 0, 0, 0.75);
   -webkit-box-shadow: 0px 0px 15px -2px rgba(0, 0, 0, 0.75);
   -moz-box-shadow: 0px 0px 15px -2px rgba(0, 0, 0, 0.75);
 `;
-
 const ImageBox = styled.a`
   height: 16rem;
   cursor: pointer;

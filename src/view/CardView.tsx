@@ -36,6 +36,8 @@ const CardView: React.FC<TCard> = observer(({ info, onToggleList, onToggleMyList
 
 const Wrapper = styled.div`
   position: relative;
+  width: 16rem;
+  height: 18.5rem;
 `;
 
 export default CardView;
