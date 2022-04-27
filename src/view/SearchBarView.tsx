@@ -102,6 +102,7 @@ const Bar = styled.div<TBar>`
   background-color: ${({ theme }) => theme.CusColor.white};
   font-size: 2rem;
   margin-left: auto;
+  margin: auto;
   @media screen and (max-width: 1024px) {
     width: 50rem;
   }
@@ -117,12 +118,14 @@ const Bar = styled.div<TBar>`
 const Input = styled.input`
   width: 100%;
   height: 2.5rem;
-  margin-left: 0.4rem;
+  margin: auto;
+  /* margin-left: 0.4rem; */
   border: none;
   outline: none;
   color: ${({ theme }) => theme.CusColor.gray};
   @media screen and (max-width: 1024px) {
     width: 50rem;
+    font-size: 1.6rem;
   }
 `;
 const ListView = styled.ul<TListView>`

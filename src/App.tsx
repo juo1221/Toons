@@ -30,9 +30,10 @@ const App = () => {
 };
 
 const Wrapper = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 4fr;
   width: 100%;
   height: 100vh;
-  ${({ theme }) => theme.CusFlex('none', 'none')}
 `;
 const Container = styled.div`
   width: 100%;
@@ -42,6 +43,7 @@ const Container = styled.div`
 `;
 
 const Box = styled.div`
+  margin: auto;
   margin-top: 3.7rem;
   ${({ theme }) => theme.CusFlex('space-between')};
   @media screen and (max-width: 1024px) {

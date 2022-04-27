@@ -58,6 +58,9 @@ const Card = styled.div`
   box-shadow: 0px 0px 15px -2px rgba(0, 0, 0, 0.75);
   -webkit-box-shadow: 0px 0px 15px -2px rgba(0, 0, 0, 0.75);
   -moz-box-shadow: 0px 0px 15px -2px rgba(0, 0, 0, 0.75);
+  @media screen and (max-width: 1024px) {
+    width: 14rem;
+  }
 `;
 const ImageBox = styled.a`
   height: 16rem;
@@ -67,6 +70,10 @@ const ImageBox = styled.a`
   img {
     width: 100%;
     height: 100%;
+  }
+  @media screen and (max-width: 1024px) {
+    width: 14rem;
+    height: 14rem;
   }
 `;
 const Title = styled.span`
@@ -81,6 +88,10 @@ const Title = styled.span`
   text-align: center;
   padding: 0.75rem 2rem;
   ${({ theme }) => theme.hideText()}
+  @media screen and (max-width: 1024px) {
+    font-size: 1.3rem;
+    top: 14rem;
+  }
 `;
 const Sub = styled.div<TSub>`
   height: 2.5rem;

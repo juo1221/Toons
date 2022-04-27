@@ -63,16 +63,16 @@ type TContainer = { platForm: string };
 
 const Container = styled.div<TContainer>`
   display: grid;
-  grid-template-columns: ${({ platForm }) => (platForm === 'myList' ? 'repeat(7,1fr)' : 'repeat(auto-fill, 200px)')};
+  grid-template-columns: repeat(auto-fill, 200px);
   gap: 0.5rem;
   justify-content: center;
   justify-items: center;
   padding-top: 10rem;
   padding-bottom: 20rem;
+  margin: auto;
 
   @media screen and (max-width: 1024px) {
-    grid-template-columns: ${({ platForm }) => (platForm === 'myList' ? 'repeat(7,1fr)' : 'repeat(2, 200px)')};
-
+    grid-template-columns: repeat(3, 1fr);
     width: 50rem;
   }
 `;

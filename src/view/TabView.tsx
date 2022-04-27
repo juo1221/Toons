@@ -97,7 +97,7 @@ type TTitle = {
 };
 
 const Aside = styled.div`
-  width: 36.4rem;
+  /* width: 36.4rem; */
   height: 100vh;
   background-color: ${({ theme }) => theme.CusColor.black};
 
@@ -106,6 +106,10 @@ const Aside = styled.div`
     background-color: white;
     width: 35px;
     height: 35px;
+    @media screen and (max-width: 1400px) {
+      width: 30px;
+      height: 30px;
+    }
   }
   .k-logo {
     border: 1px solid white;
@@ -120,10 +124,14 @@ const Title = styled.div<TTitle>`
   font-weight: 700;
   font-size: 5rem;
   margin: auto;
+  text-align: center;
   margin-top: 4.1rem;
   color: ${({ theme }) => theme.CusColor.yellow};
   opacity: ${({ BMYEONSUNGLoaded }) => (BMYEONSUNGLoaded ? 1 : 0)};
   transition: opacity 0.3s ease-in-out;
+  @media screen and (max-width: 1400px) {
+    font-size: 4rem;
+  }
 `;
 const Content = styled.p<TContent>`
   width: 20.7rem;
@@ -138,10 +146,13 @@ const Content = styled.p<TContent>`
   color: ${({ theme }) => theme.CusColor.gray};
   opacity: ${({ BMYEONSUNGLoaded }) => (BMYEONSUNGLoaded ? 1 : 0)};
   transition: opacity 0.3s ease-in-out;
+  @media screen and (max-width: 1400px) {
+    font-size: 1.3rem;
+  }
 `;
 
 const Tab = styled.div<ITab>`
-  width: 330px;
+  min-width: 235px;
   height: 61px;
   background: ${({ tabState, theme }) => (tabState ? theme.CusColor.yellow : theme.CusColor.black)};
   border-radius: 5px;
@@ -157,6 +168,9 @@ const Tab = styled.div<ITab>`
     margin-left: 1.2rem;
     opacity: ${({ BMHANNAAirLoaded }) => (BMHANNAAirLoaded ? 1 : 0)};
     transition: opacity 0.3s ease-in-out;
+  }
+  @media screen and (max-width: 1400px) {
+    font-size: 2rem;
   }
 `;
 export default TabView;
