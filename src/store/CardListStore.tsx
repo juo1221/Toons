@@ -4,7 +4,6 @@ import WebToonData from '../api/WebToonData';
 import CardStore from './CardStore';
 import { err } from 'utils/util';
 import { TData } from '../api/WebToonData';
-import { toJS } from 'mobx';
 
 type DataId = string;
 type SearchError = {
@@ -21,7 +20,6 @@ class CardListStore {
   private _filteredText: string = '';
 
   constructor(root: IRootStore) {
-    console.log('Created: CardListStore!');
     this._rootStore = root;
     makeAutoObservable(this, undefined, { autoBind: true });
   }

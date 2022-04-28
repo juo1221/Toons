@@ -23,9 +23,7 @@ interface IWebToonData {
 }
 
 class WebToonData implements IWebToonData {
-  constructor() {
-    console.log('Created: WebToonData!');
-  }
+  constructor() {}
   async getList(params: string): Promise<TData[]> {
     const loadedArr: TData[] = (await axios.get(`https://korea-webtoon-api.herokuapp.com/${params}`)).data;
     return loadedArr;
