@@ -16,29 +16,7 @@ const LODINGTEXT2 = '좋아하는작가는누구인가요?'.split('');
 const LODINGTEXT3 = '좋아하는장르는무엇인가요?'.split('');
 const LODINGTEXT4 = '내최애작품은!?'.split('');
 const LODINGTEXT5 = '내최애주인공은!?'.split('');
-const myListText = [
-  '#82dd82',
-  '#82dd82',
-  '#82dd82',
-  '#000000',
-  '#82dd82',
-  '#82dd82',
-  '#82dd82',
-  '#82dd82',
-  '#000000',
-  '#82dd82',
-  '#000000',
-  '#82dd82',
-  '#000000',
-  '#82dd82',
-  '#82dd82',
-  '#000000',
-  '#82dd82',
-  '#000000',
-  '#82dd82',
-  '#82dd82',
-  '#82dd82',
-];
+const myListText = ['#FF0000', '#000000', '#FF0000', '#000000', '#FF0000', '#000000', '#FF0000', '#000000', '#FF0000'];
 
 const CardListView: React.FC<TCardListView> = observer(({ cardList, onToggleMyList, filtedText, platForm }) => {
   const targetText = [LODINGTEXT1, LODINGTEXT2, LODINGTEXT3, LODINGTEXT4, LODINGTEXT5][Math.floor(Math.random() * 5)];
@@ -57,20 +35,19 @@ const CardListView: React.FC<TCardListView> = observer(({ cardList, onToggleMyLi
         : Array.from({ length: 28 }, (_, idx) => <Loding key={idx} text={targetText[idx]} delay={idx / 10} />);
     }
   };
-  return <Container platForm={platForm}>{cardListF()}</Container>;
+  return <Container platForm={platForm === 'myList'}>{cardListF()}</Container>;
 });
-type TContainer = { platForm: string };
+type TContainer = { platForm: boolean };
 
 const Container = styled.div<TContainer>`
   display: grid;
-  grid-template-columns: repeat(auto-fill, 200px);
+  grid-template-columns: ${({ platForm }) => (platForm ? 'repeat(3, 1fr)' : 'repeat(auto-fill, 200px)')};
   gap: 0.5rem;
   justify-content: center;
   justify-items: center;
   padding-top: 10rem;
   padding-bottom: 20rem;
   margin: auto;
-
   @media screen and (max-width: 1024px) {
     grid-template-columns: repeat(3, 1fr);
     width: 50rem;
