@@ -20,12 +20,14 @@ const CardListContainer = observer(() => {
     }
   }, [platFormStore.platForm, dateStore.DayNumber.result]);
   return (
-    <CardListView
-      cardList={(platFormStore.platForm.res === 'myList' ? myListStore : cardListStore).response}
-      platForm={platFormStore.platForm.res}
-      onToggleMyList={onToggleMyList}
-      filtedText={cardListStore.filteredText.res}
-    />
+    <div style={{ paddingTop: '10rem' }}>
+      <CardListView
+        cardList={(platFormStore.platForm.res === 'myList' ? myListStore : cardListStore).response}
+        platForm={platFormStore.platForm.res}
+        onToggleMyList={onToggleMyList}
+        filtedText={cardListStore.filteredText.res}
+      />
+    </div>
   );
 });
 

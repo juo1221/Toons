@@ -35,17 +35,22 @@ const CardListView: React.FC<TCardListView> = observer(({ cardList, onToggleMyLi
         : Array.from({ length: 28 }, (_, idx) => <Loding key={idx} text={targetText[idx]} delay={idx / 10} />);
     }
   };
-  return <Container platForm={platForm === 'myList'}>{cardListF()}</Container>;
+  return (
+    <Container id="cardlist-container" platForm={platForm === 'myList'}>
+      {cardListF()}
+    </Container>
+  );
 });
 type TContainer = { platForm: boolean };
 
 const Container = styled.div<TContainer>`
+  height: 100vh;
+  overflow: scroll;
   display: grid;
   grid-template-columns: ${({ platForm }) => (platForm ? 'repeat(3, 1fr)' : 'repeat(auto-fill, 200px)')};
   gap: 0.5rem;
   justify-content: center;
   justify-items: center;
-  padding-top: 10rem;
   padding-bottom: 20rem;
   margin: auto;
   @media screen and (max-width: 1024px) {

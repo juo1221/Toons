@@ -97,10 +97,8 @@ type TTitle = {
 };
 
 const Aside = styled.div`
-  /* width: 36.4rem; */
   height: 100vh;
   background-color: ${({ theme }) => theme.CusColor.black};
-
   svg {
     border-radius: 50%;
     background-color: white;

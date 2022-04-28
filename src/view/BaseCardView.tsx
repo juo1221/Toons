@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
 import { FaHeart } from 'react-icons/fa';
 import { TData } from '../api/WebToonData';
@@ -15,10 +15,52 @@ export type TCard = {
 type Like = {
   isLiked: boolean;
 };
-
 const BaseCardView: React.FC<TCard> = observer(({ info, onToggleList, onToggleMyList, cardStore, setIsHover }) => {
   const cardRef = useRef<HTMLDivElement>(null);
   const timeRef = useRef<NodeJS.Timeout>();
+  const targetRef = useRef<HTMLSourceElement>(null);
+  const [isObserved, setIssObserved] = useState<boolean>(false);
+  useEffect(() => {
+    const opt: IntersectionObserverInit = {
+      root: document.querySelector('#cardlist-container'),
+      rootMargin: '200px',
+      threshold: 0,
+    };
+    const callback = (entries: IntersectionObserverEntry[], observer: IntersectionObserver) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          setIssObserved(true);
+          observer.unobserve(entry.target);
+        }
+      });
+    };
+    const observer = new IntersectionObserver(callback, opt);
+    if (targetRef.current) observer.observe(targetRef.current);
+  }, []);
+
+  useEffect(() => {
+    if (!isObserved) return;
+    const url = info.img.split('webtoon/')[1];
+    let src = '/api' + '/' + url;
+    let canvas = document.createElement('canvas');
+    let ctx = canvas.getContext('2d');
+    let userImage = new Image();
+    userImage.src = src;
+    userImage.onload = function () {
+      canvas.width = userImage.width;
+      canvas.height = userImage.height;
+      ctx?.drawImage(userImage, 0, 0);
+      let webPurl = canvas.toDataURL('image/webp', 0.4);
+      if (targetRef.current) {
+        targetRef.current.srcset = webPurl;
+        const imgElement = targetRef.current.nextElementSibling as HTMLImageElement;
+        imgElement.src = src;
+      }
+    };
+    userImage.onerror = function (e) {
+      console.log('Not ok', e);
+    };
+  }, [isObserved]);
 
   const setOnClick = () => {
     onToggleList();
@@ -39,7 +81,10 @@ const BaseCardView: React.FC<TCard> = observer(({ info, onToggleList, onToggleMy
   return (
     <Card ref={cardRef} onMouseEnter={setOnHover} onMouseLeave={setOnLeave}>
       <ImageBox href={info.url}>
-        <img src={info.img} alt="이미지" />
+        <picture>
+          <source ref={targetRef} type="image/webp" />
+          <img data-src={info.url} />
+        </picture>
       </ImageBox>
       <Title>{info.title}</Title>
       <Sub isLiked={info.isLiked}>

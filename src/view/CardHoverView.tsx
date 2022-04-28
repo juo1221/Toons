@@ -68,15 +68,15 @@ const Container = styled.div`
   width: 25rem;
   height: 35rem;
   left: -4.5rem;
-  top: -8.25rem;
+  top: 1.8rem;
   z-index: 10;
   transition: all 0.5s ease-in-out;
   transform: scale(0.9);
   opacity: 0.5;
-  ${({ theme }) => theme.hideScroll()};
   box-shadow: 0px 0px 20px -2px rgba(0, 0, 0, 0.5);
   -webkit-box-shadow: 0px 0px 20px -2px rgba(0, 0, 0, 0.5);
   -moz-box-shadow: 0px 0px 20px -2px rgba(0, 0, 0, 0.5);
+  ${({ theme }) => theme.hideScroll()};
   ${({ theme }) => theme.CusFlex('none', 'none', 'column')};
 `;
 const CardImg = styled.div`
