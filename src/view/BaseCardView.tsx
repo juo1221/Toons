@@ -23,7 +23,7 @@ const BaseCardView: React.FC<TCard> = observer(({ info, onToggleList, onToggleMy
   useEffect(() => {
     const opt: IntersectionObserverInit = {
       root: document.querySelector('#cardlist-container'),
-      rootMargin: '200px',
+      rootMargin: '300px',
       threshold: 0,
     };
     const callback = (entries: IntersectionObserverEntry[], observer: IntersectionObserver) => {
