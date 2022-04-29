@@ -11,13 +11,14 @@ type TCard = {
   onToggleList: () => void;
   cardStore: CardStore;
   onToggleMyList: (card: CardStore) => void;
+  platForm: string;
 };
 
 type Like = {
   isLiked: boolean;
 };
 
-const CardView: React.FC<TCard> = observer(({ info, onToggleList, onToggleMyList, cardStore }) => {
+const CardView: React.FC<TCard> = observer(({ info, onToggleList, onToggleMyList, cardStore, platForm }) => {
   const [isHover, setIsHover] = useState(false);
   return (
     <Wrapper id="card-list">
@@ -27,7 +28,14 @@ const CardView: React.FC<TCard> = observer(({ info, onToggleList, onToggleMyList
         </>
       ) : (
         <>
-          <BaseCardView info={info} onToggleList={onToggleList} onToggleMyList={onToggleMyList} cardStore={cardStore} setIsHover={setIsHover} />
+          <BaseCardView
+            info={info}
+            platForm={platForm}
+            onToggleList={onToggleList}
+            onToggleMyList={onToggleMyList}
+            cardStore={cardStore}
+            setIsHover={setIsHover}
+          />
         </>
       )}
     </Wrapper>

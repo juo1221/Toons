@@ -4,6 +4,7 @@ import { FaHeart } from 'react-icons/fa';
 import { TData } from '../api/WebToonData';
 import { observer } from 'mobx-react-lite';
 import CardStore from 'store/CardStore';
+import { err } from 'utils/util';
 
 export type TCard = {
   info: TData & Like;
@@ -11,19 +12,47 @@ export type TCard = {
   cardStore: CardStore;
   onToggleMyList: (card: CardStore) => void;
   setIsHover: React.Dispatch<React.SetStateAction<boolean>>;
+  platForm: string;
 };
+
+interface urlConverter {
+  [prop: string]: any;
+}
+
 type Like = {
   isLiked: boolean;
 };
-const BaseCardView: React.FC<TCard> = observer(({ info, onToggleList, onToggleMyList, cardStore, setIsHover }) => {
+const BaseCardView: React.FC<TCard> = observer(({ info, onToggleList, onToggleMyList, cardStore, setIsHover, platForm }) => {
   const cardRef = useRef<HTMLDivElement>(null);
   const timeRef = useRef<NodeJS.Timeout>();
   const targetRef = useRef<HTMLSourceElement>(null);
   const [isObserved, setIssObserved] = useState<boolean>(false);
+  const urlConverter: urlConverter = {
+    table: {
+      naver: () => {
+        const poped = info.img.split('webtoon/').pop();
+        if (!poped) err(`invalid url : ${poped}`);
+        return 'naverApi/' + poped;
+      },
+      kakao: () => {
+        const poped = info.img.split('/P/C/').pop();
+        if (!poped) err(`invalid url : ${poped}`);
+        return 'kakaoApi/' + poped;
+      },
+      'kakao-page': () => {
+        const poped = info.img.split('download/resource').pop();
+        if (!poped) err(`invalid url : ${poped}`);
+        return 'pageApi' + poped;
+      },
+    },
+    convert(): string {
+      return this.table[platForm]();
+    },
+  };
   useEffect(() => {
     const opt: IntersectionObserverInit = {
       root: document.querySelector('#cardlist-container'),
-      rootMargin: '300px',
+      rootMargin: '500px',
       threshold: 0,
     };
     const callback = (entries: IntersectionObserverEntry[], observer: IntersectionObserver) => {
@@ -40,8 +69,8 @@ const BaseCardView: React.FC<TCard> = observer(({ info, onToggleList, onToggleMy
 
   useEffect(() => {
     if (!isObserved) return;
-    const url = info.img.split('webtoon/')[1];
-    let src = '/api' + '/' + url;
+    let src = urlConverter.convert();
+    if (!src) err(`invalid src : ${src}`);
     let canvas = document.createElement('canvas');
     let ctx = canvas.getContext('2d');
     let userImage = new Image();
@@ -58,7 +87,7 @@ const BaseCardView: React.FC<TCard> = observer(({ info, onToggleList, onToggleMy
       }
     };
     userImage.onerror = function (e) {
-      console.log('Not ok', e);
+      console.log(`에러!! : ${e}`);
     };
   }, [isObserved]);
 

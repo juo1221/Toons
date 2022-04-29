@@ -27,7 +27,7 @@ const CardListView: React.FC<TCardListView> = observer(({ cardList, onToggleMyLi
       return filterdCardList.map((card) => {
         const isLiked = card.isLiked.isLiked;
         const info = card.data.info;
-        return <CardView key={info._id} info={{ ...info, isLiked }} onToggleList={card.toggle} onToggleMyList={onToggleMyList} cardStore={card} />;
+        return <CardView key={info._id} platForm={platForm} info={{ ...info, isLiked }} onToggleList={card.toggle} onToggleMyList={onToggleMyList} cardStore={card} />;
       });
     } else {
       return platForm === 'myList'
@@ -45,14 +45,28 @@ type TContainer = { platForm: boolean };
 
 const Container = styled.div<TContainer>`
   height: 100vh;
-  overflow: scroll;
+  overflow-x: hidden;
+  overflow-y: scroll;
   display: grid;
+  padding-top: 1rem;
   grid-template-columns: ${({ platForm }) => (platForm ? 'repeat(3, 1fr)' : 'repeat(auto-fill, 200px)')};
   gap: 0.5rem;
   justify-content: center;
   justify-items: center;
   padding-bottom: 20rem;
   margin: auto;
+  &:: -webkit-scrollbar {
+    width: 6px;
+  }
+  &::-webkit-scrollbar-thumb {
+    height: 17%;
+    background-color: rgba(255, 255, 255, 1); /* 스크롤바 둥글게 설정 */
+    border-radius: 10px;
+  }
+  &::-webkit-scrollbar-track {
+    background-color: rgba(0, 0, 0, 0);
+  }
+
   @media screen and (max-width: 1024px) {
     grid-template-columns: repeat(3, 1fr);
     width: 50rem;

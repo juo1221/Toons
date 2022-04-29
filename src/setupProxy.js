@@ -2,13 +2,33 @@ const { createProxyMiddleware } = require('http-proxy-middleware');
 
 module.exports = function (app) {
   app.use(
-    '/api',
+    '/naverApi',
     createProxyMiddleware({
       target: 'https://image-comic.pstatic.net/webtoon/',
       changeOrigin: true,
       pathRewrite: {
-        '^/api': '',
+        '^/naverApi': '',
       },
     }),
-  );
+  ),
+    app.use(
+      '/kakaoApi',
+      createProxyMiddleware({
+        target: 'https://kr-a.kakaopagecdn.com/P/C/',
+        changeOrigin: true,
+        pathRewrite: {
+          '^/kakaoApi': '',
+        },
+      }),
+    ),
+    app.use(
+      '/pageApi',
+      createProxyMiddleware({
+        target: 'http://dn-img-page.kakao.com/download/resource',
+        changeOrigin: true,
+        pathRewrite: {
+          '^/pageApi': '',
+        },
+      }),
+    );
 };

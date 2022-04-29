@@ -5,7 +5,7 @@ import { BiRun } from 'react-icons/bi';
 import { TData } from '../api/WebToonData';
 import { TCard } from './BaseCardView';
 
-type CardHoverView = TCard;
+type CardHoverView = Omit<TCard, 'platForm'>;
 
 const CardHoverView: React.FC<CardHoverView> = ({ info, onToggleList, onToggleMyList, cardStore, setIsHover }) => {
   const targetRef = useRef<HTMLDivElement>(null);
