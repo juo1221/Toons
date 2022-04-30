@@ -2,9 +2,8 @@ import React, { useState, useCallback, useRef } from 'react';
 import styled, { css } from 'styled-components';
 import { AiOutlineCloseCircle } from '@react-icons/all-files/ai/AiOutlineCloseCircle';
 import { AiOutlineSearch } from '@react-icons/all-files/ai/AiOutlineSearch';
-
 import { observer } from 'mobx-react-lite';
-import { debounce } from 'lodash';
+import debounce from 'lodash-es/debounce';
 import { TData } from '../api/WebToonData';
 import { useEffect } from 'react';
 
