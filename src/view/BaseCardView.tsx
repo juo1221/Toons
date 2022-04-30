@@ -128,6 +128,7 @@ type TSub = {
   isLiked: boolean;
 };
 const Card = styled.div`
+  width: 16rem;
   position: relative;
   ${({ theme }) => theme.CusFlex('none', 'none', 'column')}
   box-shadow: 0px 0px 15px -2px rgba(0, 0, 0, 0.75);
