@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { ReactComponent as NaverLogo } from '../assets/logo-naver.svg';
 import { ReactComponent as KakaoLogo } from '../assets/logo-kakao.svg';
 import { ReactComponent as KakaoPageLogo } from '../assets/logo-kakaoPage.svg';
-import { FcLike } from 'react-icons/fc';
+import { FcLike } from '@react-icons/all-files/fc/FcLike';
 import { observer } from 'mobx-react-lite';
 import { useFont } from '../hooks/font-hooks';
 

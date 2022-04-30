@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import styled from 'styled-components';
-import { FaHeart } from 'react-icons/fa';
+import { FaHeart } from '@react-icons/all-files/fa/FaHeart';
 
 type TLodingView = {
   text?: string;

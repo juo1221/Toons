@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import styled, { css } from 'styled-components';
-import { FaHeart } from 'react-icons/fa';
-import { BiRun } from 'react-icons/bi';
+import { FaHeart } from '@react-icons/all-files/fa/FaHeart';
+import { BiRun } from '@react-icons/all-files/bi/BiRun';
 import { TData } from '../api/WebToonData';
 import { TCard } from './BaseCardView';
 

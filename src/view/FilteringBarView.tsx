@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import { observer } from 'mobx-react-lite';
-import { AiOutlineCloseCircle } from 'react-icons/ai';
-import { AiOutlineSearch } from 'react-icons/ai';
+import { AiOutlineCloseCircle } from '@react-icons/all-files/ai/AiOutlineCloseCircle';
+import { AiOutlineSearch } from '@react-icons/all-files/ai/AiOutlineSearch';
 
 type TFilteringBarView = {
   onFilter: (text: string) => void;

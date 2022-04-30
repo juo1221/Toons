@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
-import { FaHeart } from 'react-icons/fa';
+import { FaHeart } from '@react-icons/all-files/fa/FaHeart';
 import { TData } from '../api/WebToonData';
 import { observer } from 'mobx-react-lite';
 import CardStore from 'store/CardStore';
@@ -87,7 +87,8 @@ const BaseCardView: React.FC<TCard> = observer(({ info, onToggleList, onToggleMy
       }
     };
     userImage.onerror = function (e) {
-      console.log(`에러!! : ${e}`);
+      console.log(`에러!! `);
+      console.log(e);
     };
   }, [isObserved]);
 
