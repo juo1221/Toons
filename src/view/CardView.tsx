@@ -1,10 +1,10 @@
-import React, { useRef, useState } from 'react';
+import React, { useState, Suspense, lazy } from 'react';
 import styled from 'styled-components';
 import { TData } from '../api/WebToonData';
 import { observer } from 'mobx-react-lite';
 import CardStore from 'store/CardStore';
 import BaseCardView from './BaseCardView';
-import CardHoverView from './CardHoverView';
+const LazyCardComponent = lazy(() => import('./CardHoverView'));
 
 type TCard = {
   info: TData & Like;
@@ -20,14 +20,13 @@ type Like = {
 
 const CardView: React.FC<TCard> = observer(({ info, onToggleList, onToggleMyList, cardStore, platForm }) => {
   const [isHover, setIsHover] = useState(false);
+
   return (
     <Wrapper id="card-list">
-      {isHover ? (
-        <>
-          <CardHoverView info={info} onToggleList={onToggleList} onToggleMyList={onToggleMyList} cardStore={cardStore} setIsHover={setIsHover} />
-        </>
-      ) : (
-        <>
+      <Suspense fallback={null}>
+        {isHover ? (
+          <LazyCardComponent info={info} onToggleList={onToggleList} onToggleMyList={onToggleMyList} cardStore={cardStore} setIsHover={setIsHover} />
+        ) : (
           <BaseCardView
             info={info}
             platForm={platForm}
@@ -36,8 +35,8 @@ const CardView: React.FC<TCard> = observer(({ info, onToggleList, onToggleMyList
             cardStore={cardStore}
             setIsHover={setIsHover}
           />
-        </>
-      )}
+        )}
+      </Suspense>
     </Wrapper>
   );
 });
