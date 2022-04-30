@@ -46,6 +46,7 @@ const Wrapper = styled.div`
   position: relative;
   width: 16rem;
   height: 18.5rem;
+  ${({ theme }) => theme.CusFlex()};
 `;
 
 export default CardView;

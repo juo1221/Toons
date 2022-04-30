@@ -27,7 +27,16 @@ const CardListView: React.FC<TCardListView> = observer(({ cardList, onToggleMyLi
       return filterdCardList.map((card) => {
         const isLiked = card.isLiked.isLiked;
         const info = card.data.info;
-        return <CardView key={info._id} platForm={platForm} info={{ ...info, isLiked }} onToggleList={card.toggle} onToggleMyList={onToggleMyList} cardStore={card} />;
+        return (
+          <CardView
+            key={info._id}
+            platForm={platForm}
+            info={{ ...info, isLiked }}
+            onToggleList={card.toggle}
+            onToggleMyList={onToggleMyList}
+            cardStore={card}
+          />
+        );
       });
     } else {
       return platForm === 'myList'
@@ -49,7 +58,7 @@ const Container = styled.div<TContainer>`
   overflow-y: scroll;
   display: grid;
   padding-top: 1rem;
-  grid-template-columns: ${({ platForm }) => (platForm ? 'repeat(3, 1fr)' : 'repeat(auto-fill, 200px)')};
+  grid-template-columns: ${({ platForm }) => (platForm ? 'repeat(3, 1fr)' : 'repeat(auto-fill, 250px)')};
   gap: 0.5rem;
   justify-content: center;
   justify-items: center;
@@ -66,10 +75,11 @@ const Container = styled.div<TContainer>`
   &::-webkit-scrollbar-track {
     background-color: rgba(0, 0, 0, 0);
   }
-
   @media screen and (max-width: 1024px) {
-    grid-template-columns: repeat(3, 1fr);
-    width: 50rem;
+    grid-template-columns: repeat(2, 1fr);
+    width: 60rem;
+  }
+  @media screen and (max-width: 1200px) {
   }
 `;
 

@@ -6,10 +6,8 @@ import { TData } from '../api/WebToonData';
 import { TCard } from './BaseCardView';
 
 type CardHoverView = Omit<TCard, 'platForm'>;
-
 const CardHoverView: React.FC<CardHoverView> = ({ info, onToggleList, onToggleMyList, cardStore, setIsHover }) => {
   const targetRef = useRef<HTMLDivElement>(null);
-
   const setOnLeave = () => {
     setIsHover(false);
   };
@@ -78,6 +76,9 @@ const Container = styled.div`
   -moz-box-shadow: 0px 0px 20px -2px rgba(0, 0, 0, 0.5);
   ${({ theme }) => theme.hideScroll()};
   ${({ theme }) => theme.CusFlex('none', 'none', 'column')};
+  @media screen and (max-width: 1360px) {
+    width: 25rem;
+  }
 `;
 const CardImg = styled.div`
   width: 25rem;

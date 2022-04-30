@@ -104,7 +104,7 @@ const Bar = styled.div<TBar>`
   margin-left: auto;
   margin: auto;
   @media screen and (max-width: 1024px) {
-    width: 50rem;
+    width: 60rem;
   }
   ${({ theme }) => theme.CusFlex('none', 'none')};
   svg {
@@ -124,7 +124,7 @@ const Input = styled.input`
   outline: none;
   color: ${({ theme }) => theme.CusColor.gray};
   @media screen and (max-width: 1024px) {
-    width: 50rem;
+    width: 60rem;
     font-size: 1.6rem;
   }
 `;

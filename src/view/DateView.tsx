@@ -37,7 +37,7 @@ const Container = styled.div`
   ${({ theme }) => theme.CusFlex('space-between')};
   margin: auto;
   @media screen and (max-width: 1024px) {
-    width: 50rem;
+    width: 60rem;
   }
 `;
 const Text = styled.div<TText>`
