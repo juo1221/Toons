@@ -12,7 +12,3 @@
     from = "/pageApi/*"
     to = "http://dn-img-page.kakao.com/download/resource"
     status = 200
-    
-[[build]]
-    command = "CI = yarn build"
-    publish = "build"
