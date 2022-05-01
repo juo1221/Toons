@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import { ReactComponent as NaverLogo } from '../assets/logo-naver.svg';
 import { ReactComponent as KakaoLogo } from '../assets/logo-kakao.svg';

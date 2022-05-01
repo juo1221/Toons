@@ -69,17 +69,17 @@ const BaseCardView: React.FC<TCard> = observer(({ info, onToggleList, onToggleMy
 
   useEffect(() => {
     if (!isObserved) return;
-    let src = urlConverter.convert();
+    const src = urlConverter.convert();
     if (!src) err(`invalid src : ${src}`);
-    let canvas = document.createElement('canvas');
-    let ctx = canvas.getContext('2d');
-    let userImage = new Image();
+    const canvas = document.createElement('canvas');
+    const ctx = canvas.getContext('2d');
+    const userImage = new Image();
     userImage.src = src;
     userImage.onload = function () {
       canvas.width = userImage.width;
       canvas.height = userImage.height;
       ctx?.drawImage(userImage, 0, 0);
-      let webPurl = canvas.toDataURL('image/webp', 0.4);
+      const webPurl = canvas.toDataURL('image/webp', 0.4);
       if (targetRef.current) {
         targetRef.current.srcset = webPurl;
         const imgElement = targetRef.current.nextElementSibling as HTMLImageElement;
