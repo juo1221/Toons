@@ -9,3 +9,9 @@
   to = "https://kr-a.kakaopagecdn.com/P/C/:splat"
   status = 200
   force = true
+
+[[redirects]]
+  from = "/pageApi/*"
+  to = "http://dn-img-page.kakao.com/download/resource:splat"
+  status = 200
+  force = true
