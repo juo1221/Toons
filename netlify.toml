@@ -3,3 +3,9 @@
   to = "https://image-comic.pstatic.net/webtoon/:splat"
   status = 200
   force = true
+
+[[redirects]]
+  from = "/kakaoApi/*"
+  to = "https://kr-a.kakaopagecdn.com/P/C/:splat"
+  status = 200
+  force = true
