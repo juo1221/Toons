@@ -16,7 +16,7 @@ const LODINGTEXT2 = '좋아하는작가는누구인가요?'.split('');
 const LODINGTEXT3 = '좋아하는장르는무엇인가요?'.split('');
 const LODINGTEXT4 = '내최애작품은!?'.split('');
 const LODINGTEXT5 = '내최애주인공은!?'.split('');
-const myListText = ['#FF0000', '#000000', '#FF0000', '#000000', '#FF0000', '#000000', '#FF0000', '#000000', '#FF0000'];
+const myListText = ['N', 'O', 'N', 'O'];
 
 const CardListView: React.FC<TCardListView> = observer(({ cardList, onToggleMyList, filtedText, platForm }) => {
   const targetText = [LODINGTEXT1, LODINGTEXT2, LODINGTEXT3, LODINGTEXT4, LODINGTEXT5][Math.floor(Math.random() * 5)];
@@ -40,7 +40,7 @@ const CardListView: React.FC<TCardListView> = observer(({ cardList, onToggleMyLi
       });
     } else {
       return platForm === 'myList'
-        ? Array.from({ length: myListText.length }, (_, idx) => <Loding key={idx} backgroundColor={myListText[idx]} delay={idx / 10} />)
+        ? Array.from({ length: myListText.length }, (_, idx) => <Loding key={idx} text={myListText[idx]} delay={idx / 10} />)
         : Array.from({ length: 28 }, (_, idx) => <Loding key={idx} text={targetText[idx]} delay={idx / 10} />);
     }
   };
@@ -58,7 +58,7 @@ const Container = styled.div<TContainer>`
   overflow-y: scroll;
   display: grid;
   padding-top: 1rem;
-  grid-template-columns: ${({ platForm }) => (platForm ? 'repeat(3, 1fr)' : 'repeat(auto-fill, 250px)')};
+  grid-template-columns: ${({ platForm }) => (platForm ? 'repeat(2, 1fr)' : 'repeat(auto-fill, 250px)')};
   gap: 0.5rem;
   justify-content: center;
   justify-items: center;

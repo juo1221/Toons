@@ -44,6 +44,9 @@ const BaseCardView: React.FC<TCard> = observer(({ info, onToggleList, onToggleMy
         if (!poped) err(`invalid url : ${poped}`);
         return 'pageApi' + poped;
       },
+      myList: () => {
+        return urlConverter.table[info.service]();
+      },
     },
     convert(): string {
       return this.table[platForm]();
@@ -52,7 +55,7 @@ const BaseCardView: React.FC<TCard> = observer(({ info, onToggleList, onToggleMy
   useEffect(() => {
     const opt: IntersectionObserverInit = {
       root: document.querySelector('#cardlist-container'),
-      rootMargin: '500px',
+      rootMargin: '1000px',
       threshold: 0,
     };
     const callback = (entries: IntersectionObserverEntry[], observer: IntersectionObserver) => {
@@ -79,7 +82,7 @@ const BaseCardView: React.FC<TCard> = observer(({ info, onToggleList, onToggleMy
       canvas.width = userImage.width;
       canvas.height = userImage.height;
       ctx?.drawImage(userImage, 0, 0);
-      const webPurl = canvas.toDataURL('image/webp', 0.4);
+      const webPurl = canvas.toDataURL('image/webp', 0.1);
       if (targetRef.current) {
         targetRef.current.srcset = webPurl;
         const imgElement = targetRef.current.nextElementSibling as HTMLImageElement;
@@ -113,7 +116,7 @@ const BaseCardView: React.FC<TCard> = observer(({ info, onToggleList, onToggleMy
       <ImageBox href={info.url}>
         <picture>
           <source ref={targetRef} type="image/webp" />
-          <img data-src={info.url} />
+          <img data-src={info.img} />
         </picture>
       </ImageBox>
       <Title>{info.title}</Title>

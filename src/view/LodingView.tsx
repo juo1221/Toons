@@ -4,12 +4,11 @@ import { FaHeart } from '@react-icons/all-files/fa/FaHeart';
 
 type TLodingView = {
   text?: string;
-  backgroundColor?: string;
   delay: number;
 };
-const LodingView: React.FC<TLodingView> = ({ backgroundColor = '#000000', text, delay }) => {
+const LodingView: React.FC<TLodingView> = ({ text, delay }) => {
   return (
-    <Card backgroundColor={backgroundColor} delay={delay}>
+    <Card delay={delay}>
       <ImageBox className="loding-image">{text}</ImageBox>
       <Title>...</Title>
       <Sub>
@@ -21,17 +20,16 @@ const LodingView: React.FC<TLodingView> = ({ backgroundColor = '#000000', text, 
 
 type TCard = {
   delay: number;
-  backgroundColor: string;
 };
 
 const Card = styled.div<TCard>`
   position: relative;
   width: 16rem;
   height: 18.5rem;
-  box-shadow: 0px 0px 15px -2px rgba(0, 0, 0, 0.75);
-  -webkit-box-shadow: 0px 0px 15px -2px rgba(0, 0, 0, 0.75);
-  -moz-box-shadow: 0px 0px 15px -2px rgba(0, 0, 0, 0.75);
-  background-color: ${({ backgroundColor }) => backgroundColor};
+  background-color: rgba(0, 0, 0, 0.65);
+  box-shadow: 0px 0px 15px -2px rgba(0, 0, 0, 0.65);
+  -webkit-box-shadow: 0px 0px 15px -2px rgba(0, 0, 0, 0.65);
+  -moz-box-shadow: 0px 0px 15px -2px rgba(0, 0, 0, 0.65);
   animation: ${({ delay }) => `6s ease ${delay}s infinite flow`};
   ${({ theme }) => theme.CusFlex('none', 'none', 'column')};
   @keyframes flow {
@@ -63,7 +61,7 @@ const ImageBox = styled.div`
   ${({ theme }) => theme.CusFlex()};
   @keyframes skeleton-gradient {
     0% {
-      background-color: rgba(65, 46, 46, 0.1);
+      background-color: rgb(165, 165, 165, 0.1);
     }
     50% {
       background-color: rgb(165, 165, 165, 0.2);
