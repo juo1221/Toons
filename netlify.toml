@@ -1,0 +1,14 @@
+[[redirects]]
+    from = "/naverApi/*"
+    to = "https://image-comic.pstatic.net/webtoon/:splat"
+    status = 200
+
+[[redirects]]
+    from = "/kakaoApi/*"
+    to = "https://kr-a.kakaopagecdn.com/P/C/:splat"
+    status = 200
+
+[[redirects]]
+    from = "/pageApi/*"
+    to = "http://dn-img-page.kakao.com/download/resource"
+    status = 200
