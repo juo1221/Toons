@@ -4,6 +4,7 @@
 
 배포주소 : https://main--soft-pixie-1e7120.netlify.app/
 
+*첫 api 요청 시 시간이 오래 걸릴 수 있습니다.*
 
 
 # 1. 스택 
