@@ -1,0 +1,27 @@
+@font-face {
+  font-family: BMYEONSUNG;
+  src: url('./assets/fonts/BMYEONSUNG.woff2') format('woff2'), url('./assets/fonts/BMYEONSUNG.woff') format('woff'),
+    url('./assets/fonts/BMYEONSUNG.ttf') format('truetype');
+  font-display: fallback;
+}
+@font-face {
+  font-family: BMHANNAAir;
+  src: url('./assets/fonts/BMHANNAAir.woff2') format('woff2'), url('./assets/fonts/BMHANNAAir.woff') format('woff'),
+    url('./assets/fonts/BMHANNAAir.ttf') format('truetype');
+  font-display: fallback;
+}
+#search-bar,
+#date-bar,
+#filter-bar,
+#sort-bar,
+.aside-title,
+.aside-content {
+  font-family: 'BMYEONSUNG', sans-serif;
+}
+#card-list,
+.tab {
+  font-family: 'BMHANNAAir', sans-serif;
+}
+.loding-image {
+  font-family: 'BMYEONSUNG', sans-serif;
+}

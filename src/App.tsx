@@ -1,4 +1,5 @@
 import React from 'react';
+import './App.css';
 import TabContainer from './container/TabContainer';
 import SearchBarContainer from './container/SearchBarContainer';
 import FilteringBarContainer from './container/FilteringBarContainer';
